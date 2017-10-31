@@ -290,7 +290,7 @@ GameObject:
   - component: {fileID: 746091483}
   - component: {fileID: 746091482}
   - component: {fileID: 746091481}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GrassMid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -779,6 +779,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abbc9092e61c06143b52c4e8967eb3f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!95 &1936942040
 Animator:
   serializedVersion: 3
@@ -788,7 +791,7 @@ Animator:
   m_GameObject: {fileID: 1936942034}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e8a7b98208b993545a2097ff63d6063c, type: 2}
+  m_Controller: {fileID: 9100000, guid: 7d56e8598468de140bcf7b458cb89d30, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
