@@ -221,6 +221,10 @@ Prefab:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 1551752370008528, guid: 969c418e709d8df4995ae47450005450, type: 2}
+      propertyPath: m_TagString
+      value: Trap
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 969c418e709d8df4995ae47450005450, type: 2}
   m_IsPrefabParent: 0
@@ -265,9 +269,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab35096387a299443b0e2b1acebdea75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  followTarget: {fileID: 1936942038}
+  followTarget: {fileID: 1639641714}
   Radius: 0.5
-  Smooth: 3
+  Smooth: 10
 --- !u!114 &251189141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -290,7 +294,7 @@ GameObject:
   - component: {fileID: 270826879}
   - component: {fileID: 270826878}
   - component: {fileID: 270826880}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: rowTop_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -435,6 +439,10 @@ Prefab:
     - target: {fileID: 1213270895892466, guid: 969c418e709d8df4995ae47450005450, type: 2}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1551752370008528, guid: 969c418e709d8df4995ae47450005450, type: 2}
+      propertyPath: m_TagString
+      value: Trap
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 969c418e709d8df4995ae47450005450, type: 2}
@@ -765,7 +773,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &687268254
 Prefab:
@@ -840,7 +848,7 @@ GameObject:
   - component: {fileID: 746091482}
   - component: {fileID: 746091481}
   - component: {fileID: 746091484}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: GrassMid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1065,6 +1073,10 @@ Prefab:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 1551752370008528, guid: 969c418e709d8df4995ae47450005450, type: 2}
+      propertyPath: m_TagString
+      value: Trap
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 969c418e709d8df4995ae47450005450, type: 2}
   m_IsPrefabParent: 0
@@ -1191,6 +1203,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1424425223047134, guid: e99f3d7ef2ab8074e9effb1f534a87f8, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e99f3d7ef2ab8074e9effb1f534a87f8, type: 2}
   m_IsPrefabParent: 0
@@ -1284,7 +1300,7 @@ Transform:
   - {fileID: 115731398}
   - {fileID: 1474663512}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1214794240
 GameObject:
@@ -1522,7 +1538,7 @@ GameObject:
   - component: {fileID: 1261253027}
   - component: {fileID: 1261253026}
   - component: {fileID: 1261253028}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: rowTop_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1722,6 +1738,10 @@ Prefab:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 1551752370008528, guid: 969c418e709d8df4995ae47450005450, type: 2}
+      propertyPath: m_TagString
+      value: Trap
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 969c418e709d8df4995ae47450005450, type: 2}
   m_IsPrefabParent: 0
@@ -1798,6 +1818,7 @@ GameObject:
   - component: {fileID: 1639641717}
   - component: {fileID: 1639641716}
   - component: {fileID: 1639641715}
+  - component: {fileID: 1639641718}
   m_Layer: 8
   m_Name: Rabbit
   m_TagString: Rabbit
@@ -1812,14 +1833,14 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1639641713}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.33, y: -1.22, z: 0}
+  m_LocalPosition: {x: -7.79, y: 1.29, z: 0}
   m_LocalScale: {x: 0.15221535, y: 0.15221535, z: 0.015221535}
   m_Children:
   - {fileID: 1936942038}
   - {fileID: 1707702514}
   - {fileID: 1776554232}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1639641715
 MonoBehaviour:
@@ -1833,9 +1854,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 1936942040}
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 512
+  x_force: 900
+  y_force: 1800
+  down_force: 7777
 --- !u!50 &1639641716
 Rigidbody2D:
   serializedVersion: 4
@@ -1847,7 +1868,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 6
+  m_Mass: 5
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -1868,7 +1889,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0135166645, y: -0.66789913}
+  m_Offset: {x: -0.0135166645, y: -0.64895403}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1879,8 +1900,22 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.009573, y: 5.343397}
+  m_Size: {x: 3.009573, y: 5.3055067}
   m_EdgeRadius: 0
+--- !u!114 &1639641718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1639641713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b6780a8841a6134db85ea8037d09de9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camare_toReset: {fileID: 1153049579}
+  smoothpos_toReset: {fileID: 251189138}
+  maxLife: 1
 --- !u!1 &1707702513
 GameObject:
   m_ObjectHideFlags: 0
@@ -1905,7 +1940,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1707702513}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -2.96, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1639641714}
@@ -1923,6 +1958,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 1936942040}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!61 &1707702516
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1935,7 +1973,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.02855885, y: -3.3062708}
+  m_Offset: {x: -0.06616354, y: -0.2926317}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1946,7 +1984,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.4561913, y: 0.5646138}
+  m_Size: {x: 2.5538726, y: 0.13519722}
   m_EdgeRadius: 0
 --- !u!4 &1776554232 stripped
 Transform:
@@ -2007,6 +2045,10 @@ Prefab:
     - target: {fileID: 1217252585494388, guid: 969c418e709d8df4995ae47450005450, type: 2}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1551752370008528, guid: 969c418e709d8df4995ae47450005450, type: 2}
+      propertyPath: m_TagString
+      value: Trap
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 969c418e709d8df4995ae47450005450, type: 2}

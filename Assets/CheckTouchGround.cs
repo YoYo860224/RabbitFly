@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class CheckTouchGround: MonoBehaviour {
     public Animator anim;
+    [SerializeField] LayerMask whatIsGround;
+
 	// Use this for initialization
 	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
+        //anim = transform.Find("Main").GetComponent<Animator>();  //  Get From Public
+    }
+
+    // Update is called once per frame
+    void Update () {
 		
 	}
     private void OnTriggerEnter2D(Collider2D collision)

@@ -17,7 +17,7 @@ public class SmoothPos : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (transform.position.y > followTarget.position.y + Radius)
+        if (Mathf.Abs(transform.position.y - followTarget.position.y) > Radius)
         {
             transform.position = Vector3.Lerp(transform.position, followTarget.position, Smooth * Time.deltaTime);
         }

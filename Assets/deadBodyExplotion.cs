@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class deadBodyExplotion : MonoBehaviour {
-
     // Use this for initialization
     void Start() {
         for (int i = 0; i < transform.childCount; i++)

@@ -6,10 +6,14 @@ public class Control : MonoBehaviour {
     //  get animator
     public Animator anim;
 
+    // force Control
+    public int x_force;
+    public int y_force;
+    public int down_force;
+
     //  checkGround
-    [SerializeField] LayerMask whatIsGround;
-    float groundedRadius = 1.0f;
-    bool grounded = true;
+    /* Set Ground detect in GameObject foot*/
+    bool grounded = false;
 
     //  Find Heightest
     Vector3 prePos;
@@ -17,46 +21,40 @@ public class Control : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        //anim = GetComponent<Animator>();  //  Get From Public
+        //anim = transform.Find("Main").GetComponent<Animator>();  //  Get From Public
         prePos = transform.position;
         nowPos = transform.position;
     }
 	
 	// Update is called once per frame
 	void Update () {
-
         grounded = anim.GetBool("isGround");
-        //grounded = Physics2D.OverlapCircle(transform.position, groundedRadius, whatIsGround);
-        //anim.SetBool("isGround", grounded);
-        //Debug.Log(grounded);
 
+        #region Key_Control
         if (Input.GetKeyDown(KeyCode.D)){
-            //anim.SetBool("isGround", false);
             anim.SetTrigger("jumpR");
             GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
-            GetComponent<Rigidbody2D>().AddForce(new Vector2(1000, 2000));
-            //grounded = false;
+            GetComponent<Rigidbody2D>().AddForce(new Vector2(x_force, y_force));
         }
 
         if (Input.GetKeyDown(KeyCode.A))
         {
-            //anim.SetBool("isGround", false);
             anim.SetTrigger("jumpL");
             GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-            GetComponent<Rigidbody2D>().AddForce(new Vector2(-1000, 2000));
-            //grounded = false;
+            GetComponent<Rigidbody2D>().AddForce(new Vector2(-x_force, y_force));
         }
 
-        //  goDown
         if (Input.GetKeyDown(KeyCode.S))
         {
             if (!grounded)
             {
                 anim.SetTrigger("down");
                 GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-                GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -10000));
+                GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -down_force));
             }
         }
+        #endregion
+
 
         prePos = nowPos;
         nowPos = transform.position;
