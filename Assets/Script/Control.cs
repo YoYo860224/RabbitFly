@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class Control : MonoBehaviour {
     //  get animator
-    Animator anim;
+    public Animator anim;
 
     //  checkGround
     [SerializeField] LayerMask whatIsGround;
     float groundedRadius = 1.0f;
     bool grounded = true;
 
-    //  Fint Heightest
+    //  Find Heightest
     Vector3 prePos;
     Vector3 nowPos;
 
     // Use this for initialization
     void Start () {
-        anim = GetComponent<Animator>();
+        //anim = GetComponent<Animator>();  //  Get From Public
         prePos = transform.position;
         nowPos = transform.position;
     }
@@ -25,9 +25,10 @@ public class Control : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        grounded = Physics2D.OverlapCircle(transform.position, groundedRadius, whatIsGround);
-        anim.SetBool("isGround", grounded);
-        Debug.Log(grounded);
+        grounded = anim.GetBool("isGround");
+        //grounded = Physics2D.OverlapCircle(transform.position, groundedRadius, whatIsGround);
+        //anim.SetBool("isGround", grounded);
+        //Debug.Log(grounded);
 
         if (Input.GetKeyDown(KeyCode.D)){
             //anim.SetBool("isGround", false);
