@@ -12,4 +12,18 @@ By NTUST CSIE Student:
 
 # Setup
 * Open with Unity2017.1.1f1.
-* Build with PC
+* add Tag   
+```
+0. Rabbit
+1. Ground
+2. Trap
+```
+* add Layer  
+```
+8. Rabbit
+9. Ground
+10. Trap
+```
+
+* add Layer and Tag to what You want do
+* Build with PC 
