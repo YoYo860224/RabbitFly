@@ -5,6 +5,7 @@ using UnityEngine;
 public class Control : MonoBehaviour {
     //  get animator
     public Animator anim;
+    public GameObject push_prefab;
 
     // force Control
     public int x_force;
@@ -35,6 +36,7 @@ public class Control : MonoBehaviour {
             anim.SetTrigger("jumpR");
             GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
             GetComponent<Rigidbody2D>().AddForce(new Vector2(x_force, y_force));
+            Instantiate(push_prefab, transform.Find("Foot").position, transform.Find("Foot").rotation);
         }
 
         if (Input.GetKeyDown(KeyCode.A))
@@ -42,6 +44,7 @@ public class Control : MonoBehaviour {
             anim.SetTrigger("jumpL");
             GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
             GetComponent<Rigidbody2D>().AddForce(new Vector2(-x_force, y_force));
+            Instantiate(push_prefab, transform.Find("Foot").position, transform.Find("Foot").rotation);
         }
 
         if (Input.GetKeyDown(KeyCode.S))

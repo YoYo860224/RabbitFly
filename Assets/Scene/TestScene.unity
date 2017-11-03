@@ -1625,6 +1625,48 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 6.8686223, y: 3.566118}
   m_EdgeRadius: 0
+--- !u!1001 &1379580898
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4490968024004476, guid: 70ce77145452a584695a2f28c7316672, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4490968024004476, guid: 70ce77145452a584695a2f28c7316672, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4490968024004476, guid: 70ce77145452a584695a2f28c7316672, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4490968024004476, guid: 70ce77145452a584695a2f28c7316672, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4490968024004476, guid: 70ce77145452a584695a2f28c7316672, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4490968024004476, guid: 70ce77145452a584695a2f28c7316672, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4490968024004476, guid: 70ce77145452a584695a2f28c7316672, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4490968024004476, guid: 70ce77145452a584695a2f28c7316672, type: 2}
+      propertyPath: m_RootOrder
+      value: 25
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 70ce77145452a584695a2f28c7316672, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1474663511
 GameObject:
   m_ObjectHideFlags: 0
@@ -1854,6 +1896,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 1936942040}
+  push_prefab: {fileID: 1481314569481124, guid: 70ce77145452a584695a2f28c7316672,
+    type: 2}
   x_force: 900
   y_force: 1800
   down_force: 7777
