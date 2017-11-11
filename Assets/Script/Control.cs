@@ -84,7 +84,7 @@ public class Control : MonoBehaviour {
         else
             anim.SetBool("Be_fallRound", false);
 
-        Debug.Log(GetComponent<Rigidbody2D>().velocity);
+        //Debug.Log(GetComponent<Rigidbody2D>().velocity);
 
 
         if (anim.GetCurrentAnimatorStateInfo(0).IsName("down"))
