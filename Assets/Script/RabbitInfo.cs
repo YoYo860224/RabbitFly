@@ -8,11 +8,15 @@ public class RabbitInfo : MonoBehaviour
     public GameObject smoothpos_toReset;
 
     public int maxLife;
-    int life;
+    public int life;
+
+    public static RabbitInfo
+    Instance;
     // Use this for initialization
     void Start()
     {
         life = maxLife;
+        Instance = this;
     }
 
     // Update is called once per frame
@@ -43,10 +47,12 @@ public class RabbitInfo : MonoBehaviour
             if (life > 1)
             {
                 life--;
+                UIcontroller.UIcontroll.lifeMinus();//扣血UI
             }
             else
             {
                 life--;
+                UIcontroller.UIcontroll.lifeMinus();//扣血UI
                 GetComponent<Control>().enabled = false;
                 transform.Find("Main").gameObject.SetActive(false);
                 transform.Find("Foot").gameObject.SetActive(false);
