@@ -118,6 +118,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 95704390908777234}
+  moveR: 1
+  moveL: 1
+  speed: 0.2
 --- !u!212 &212777918685076168
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -6,6 +6,7 @@ public class RabbitInfo : MonoBehaviour
 {
     public GameObject camare_toReset;
     public GameObject smoothpos_toReset;
+    //[SerializeField] LayerMask whatIsDead;
 
     public int maxLife;
     public int life;
@@ -40,24 +41,41 @@ public class RabbitInfo : MonoBehaviour
         transform.Find("DeadBody").gameObject.SetActive(false);
     }
 
+    public void GetHrut()
+    {
+        if (life > 1)
+        {
+            life--;
+            UIcontroller.UIcontroll.lifeMinus();    //扣血UI
+                                                    // 受傷動畫
+            {
+
+            }
+        }
+        else
+        {
+            life--;
+            UIcontroller.UIcontroll.lifeMinus();    //扣血UI
+
+            // 死亡動畫
+            GetComponent<Control>().enabled = false;
+            transform.Find("Main").gameObject.SetActive(false);
+            transform.Find("Foot").gameObject.SetActive(false);
+            transform.Find("DeadBody").gameObject.SetActive(true);
+
+            // 跳死亡選單
+            {
+
+            }
+        }
+    }
+
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Trap")
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Trap"))
         {
-            if (life > 1)
-            {
-                life--;
-                UIcontroller.UIcontroll.lifeMinus();//扣血UI
-            }
-            else
-            {
-                life--;
-                UIcontroller.UIcontroll.lifeMinus();//扣血UI
-                GetComponent<Control>().enabled = false;
-                transform.Find("Main").gameObject.SetActive(false);
-                transform.Find("Foot").gameObject.SetActive(false);
-                transform.Find("DeadBody").gameObject.SetActive(true);
-            }
+            GetHrut();
         }
     }
 }

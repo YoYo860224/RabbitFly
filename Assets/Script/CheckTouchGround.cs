@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CheckTouchGround: MonoBehaviour {
     public Animator anim;
-    [SerializeField] LayerMask whatIsGround;
+    //[SerializeField] LayerMask whatIsGround;
     public int combo;
     public int bounce_force;
     public GameObject Rabbit;
@@ -15,7 +15,7 @@ public class CheckTouchGround: MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        Debug.Log("combo: " + combo);
+        //Debug.Log("combo: " + combo);
 	}
     private void OnTriggerEnter2D(Collider2D collision)
     {

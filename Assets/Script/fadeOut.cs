@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class fadeOut : MonoBehaviour {
+public class FadeOut : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
