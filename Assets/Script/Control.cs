@@ -21,11 +21,17 @@ public class Control : MonoBehaviour {
 
     //  checkGround
     /* Set Ground detect in GameObject foot*/
-    bool grounded = false;
+    public bool grounded = false;
 
     //  Find Heightest
     Vector3 prePos;
     Vector3 nowPos;
+
+    // Key Setting
+    public KeyCode Key_Right = KeyCode.D;
+    public KeyCode Key_Left = KeyCode.A;
+    public KeyCode Key_Fight = KeyCode.S;
+
 
     // Use this for initialization
     void Start () {
@@ -42,8 +48,10 @@ public class Control : MonoBehaviour {
         #region Key_Control
         if (Time.time > nextKeyTime)
         {
-            if (Input.GetKeyDown(KeyCode.D))
+            if (Input.GetKeyDown(Key_Right))
             {
+                anim.ResetTrigger("jumpL");
+                anim.ResetTrigger("down");
                 anim.SetTrigger("jumpR");
                 GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
                 GetComponent<Rigidbody2D>().AddForce(new Vector2(x_force, y_force));
@@ -51,8 +59,10 @@ public class Control : MonoBehaviour {
                 nextKeyTime = Time.time + timer_f;
             }
 
-            else if (Input.GetKeyDown(KeyCode.A))
+            else if (Input.GetKeyDown(Key_Left))
             {
+                anim.ResetTrigger("jumpR");
+                anim.ResetTrigger("down");
                 anim.SetTrigger("jumpL");
                 GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
                 GetComponent<Rigidbody2D>().AddForce(new Vector2(-x_force, y_force));
@@ -60,15 +70,18 @@ public class Control : MonoBehaviour {
                 nextKeyTime = Time.time + timer_f;
             }
 
-            else if (Input.GetKeyDown(KeyCode.S))
+            else if (Input.GetKeyDown(Key_Fight))
             {
                 if (!grounded)
                 {
                     if (!anim.GetCurrentAnimatorStateInfo(0).IsName("down"))
+                    {
+                        anim.ResetTrigger("jumpR");
+                        anim.ResetTrigger("jumpL");
                         anim.SetTrigger("down");
-
+                    }
                     GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-                    GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -down_force));                  
+                    GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -down_force));
                 }
                 nextKeyTime = Time.time + timer_f;
             }

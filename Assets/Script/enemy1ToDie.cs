@@ -23,7 +23,7 @@ public class enemy1ToDie : MonoBehaviour {
         initx = transform.position.x;
         ori_pos = transform.position.x;
 
-        speed += Random.RandomRange(-0.2f, 0.2f);
+        speed += Random.Range(-0.2f, 0.2f);
     }
 
     // Update is called once per frame

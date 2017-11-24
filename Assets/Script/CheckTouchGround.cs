@@ -21,8 +21,11 @@ public class CheckTouchGround: MonoBehaviour {
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
-            anim.SetBool("isGround", true);
-            combo = 0;
+            if (collision.GetComponent<Collider2D>().isTrigger == false)
+            {
+                anim.SetBool("isGround", true);
+                combo = 0;
+            }
         }
             
         if(collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
@@ -31,6 +34,18 @@ public class CheckTouchGround: MonoBehaviour {
             combo++;
         }
             
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
+            if (collision.GetComponent<Collider2D>().isTrigger == false)
+            {
+                anim.SetBool("isGround", true);
+                combo = 0;
+            }
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
