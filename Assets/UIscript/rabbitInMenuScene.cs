@@ -6,53 +6,54 @@ using UnityEngine.UI;
 
 public class rabbitInMenuScene : MonoBehaviour {
 
-    public GameObject chooseStagePanel;
-    public Text story;
-    public Text pk;
-    public Text quit;
+    public GameObject changeChoosePanel;
+    public GameObject arrowPanel;
+    public GameObject storyCarrot;
+    public GameObject pKCarrot;
+    public GameObject quitCarrot;
     // Use this for initialization
     void Start()
     {
-        chooseStagePanel.SetActive(false);
-        story.enabled = true;
-        pk.enabled = true;
-        quit.enabled = true;
+        changeChoosePanel.SetActive(false);
+        arrowPanel.SetActive(true);
     }
-    public void chooseStageOne()
-    {
-        chooseStagePanel.SetActive(false);
-        SceneManager.LoadScene("TestScene");
-    }
-    public void chooseStageTwo()
-    {
-        SceneManager.LoadScene("Stage2");
-        chooseStagePanel.SetActive(false);
-    }
-    public void chooseStageThree()
-    {
-        SceneManager.LoadScene("Stage3");
-        chooseStagePanel.SetActive(false);
-    }
-
-
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.name == "Rabbit" && gameObject.name == "storyCarrot")
         {
-            chooseStagePanel.SetActive(true);
-            story.enabled = false;
+            this.GetComponent<Animator>().SetBool("hitCarrot", true);
+            storyCarrot.GetComponent<BoxCollider2D>().enabled = false;
+            pKCarrot.GetComponent<BoxCollider2D>().enabled = false;
+            quitCarrot.GetComponent<BoxCollider2D>().enabled = false;
+            this.Invoke("changeChoose", 0.7f);
+            this.Invoke("loadchoose", 2.0f);
         }
 
         else if (collision.gameObject.name == "Rabbit" && gameObject.name == "pkCarrot")
         {
-            SceneManager.LoadScene("pk");
-            pk.enabled = false;
+            this.GetComponent<Animator>().SetBool("hitCarrot", true);
+            storyCarrot.GetComponent<BoxCollider2D>().enabled = false;
+            pKCarrot.GetComponent<BoxCollider2D>().enabled = false;
+            quitCarrot.GetComponent<BoxCollider2D>().enabled = false;
+            this.Invoke("changeChoose", 0.7f);
+            this.Invoke("loadpk", 2.0f);
         }
         else if (collision.gameObject.name == "Rabbit" && gameObject.name == "quitCarrot")
         {
+            this.GetComponent<Animator>().SetBool("hitCarrot", true);
             Application.Quit();
-            quit.enabled = false;
+            storyCarrot.GetComponent<BoxCollider2D>().enabled = false;
+            pKCarrot.GetComponent<BoxCollider2D>().enabled = false;
+            quitCarrot.GetComponent<BoxCollider2D>().enabled = false;
         }
-
+    }
+    private void loadchoose() {
+        SceneManager.LoadSceneAsync("chooseScene");
+    }
+    private void changeChoose() {
+        changeChoosePanel.SetActive(true);
+    }
+    private void loadpk() {
+        SceneManager.LoadSceneAsync("PKMode");
     }
 }

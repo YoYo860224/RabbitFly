@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: b75aee25ba0a0be4489887bf39ac95f6
+timeCreated: 1511615998
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Taco Box
+  fontNames:
+  - Taco Box
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

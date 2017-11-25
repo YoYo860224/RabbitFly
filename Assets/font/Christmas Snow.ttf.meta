@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: f127223a0513e82438696e58975a4472
+timeCreated: 1511615822
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Christmas Snow
+  fontNames:
+  - Christmas Snow
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

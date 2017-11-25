@@ -8,7 +8,8 @@ public class UIcontroller : MonoBehaviour {
 
     public GameObject gamePanel;
     public GameObject menuPanel;
-    public GameObject FinishPanel;
+    public GameObject FinishPanel;      // for PK    (temp need bind)
+    public GameObject gameOverPanel;    // for Stage (temp need bind)
     public Text timerText;
     public Image blood1;
     public Image blood2;
@@ -21,6 +22,7 @@ public class UIcontroller : MonoBehaviour {
     void Start() {
         menuPanel.SetActive(false);
         gamePanel.SetActive(true);
+        gameOverPanel.SetActive(false);
         UIcontroll = this;
     }
     void Update() {
@@ -58,6 +60,7 @@ public class UIcontroller : MonoBehaviour {
         else if(RabbitInfo.Instance.life == 0)
         {
             blood1.enabled = false;
+            gameOverPanel.SetActive(true);
         }
     }
 

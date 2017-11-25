@@ -10,7 +10,7 @@ public class musicControll : MonoBehaviour {
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        audioSource.volume = 0;
+        audioSource.volume = 0.5f;
         muteState = false;
         preVolume = audioSource.volume;
     }
