@@ -83,7 +83,7 @@ public class PkCamara : MonoBehaviour {
         if (cam.orthographic)
         {
             // The camera's forward vector is irrelevant, only this size will matter
-            if (distance>5.0f)
+            if (distance > 5.0f)
                 cam.orthographicSize = distance;
         }
         // You specified to use MoveTowards instead of Slerp

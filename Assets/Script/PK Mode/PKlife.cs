@@ -5,7 +5,6 @@ using UnityEngine;
 public class PKlife : MonoBehaviour
 {
 
-
     // Use this for initialization
     void Start()
     {
@@ -15,14 +14,7 @@ public class PKlife : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-            Restart();
 
-    }
-
-    void Restart()
-    {
-        Application.LoadLevelAsync("PKMode");
     }
 
     public void GetHrut()
@@ -34,12 +26,6 @@ public class PKlife : MonoBehaviour
         transform.Find("Main").gameObject.SetActive(false);
         transform.Find("Foot").gameObject.SetActive(false);
         transform.Find("DeadBody").gameObject.SetActive(true);
-
-        // 跳死亡選單
-        {
-
-        }
-
     }
 
 
@@ -60,12 +46,12 @@ public class PKlife : MonoBehaviour
             }
             if (transform.Find("Main").GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("roundR"))
             {
-                //if (transform.position.y < collision.transform.position.y)
+                if (transform.position.y > collision.transform.position.y)
                     transform.gameObject.GetComponent<Control>().jumpR();
             }
             if (transform.Find("Main").GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("roundL"))
             {
-                //if (transform.position.y < collision.transform.position.y)
+                if (transform.position.y > collision.transform.position.y)
                     transform.gameObject.GetComponent<Control>().jumpL();
             }
         }
@@ -82,6 +68,16 @@ public class PKlife : MonoBehaviour
                     collision.gameObject.GetComponent<PKlife>().GetHrut();
 
                 }
+            }
+            if (transform.Find("Main").GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("roundR"))
+            {
+                if (transform.position.y > collision.transform.position.y)
+                    transform.gameObject.GetComponent<Control>().jumpR();
+            }
+            if (transform.Find("Main").GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("roundL"))
+            {
+                if (transform.position.y > collision.transform.position.y)
+                    transform.gameObject.GetComponent<Control>().jumpL();
             }
         }
 

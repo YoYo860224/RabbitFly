@@ -27,6 +27,9 @@ public class Control : MonoBehaviour
     //  checkGround
     public bool grounded = false;
 
+    // canControl
+    public bool canControl = true;
+
     //  Find Heightest
     Vector3 prePos;
     Vector3 nowPos;
@@ -48,47 +51,49 @@ public class Control : MonoBehaviour
     {
         anim.SetBool("isGround", grounded);
 
-        #region Key_Control
-        if (Time.time > nextKeyTime)
+        if (canControl)
         {
-            if (Input.GetKeyDown(Key_Right))
+            #region Key_Control
+            if (Time.time > nextKeyTime)
             {
-                anim.ResetTrigger("jumpL");
-                anim.ResetTrigger("down");
-                anim.SetTrigger("jumpR");
-                jumpR();
-                Instantiate(push_prefab, transform.Find("Foot").position, transform.Find("Foot").rotation);
-                nextKeyTime = Time.time + timer_f;
-            }
-
-            else if (Input.GetKeyDown(Key_Left))
-            {
-                anim.ResetTrigger("jumpR");
-                anim.ResetTrigger("down");
-                anim.SetTrigger("jumpL");
-                jumpL();
-                Instantiate(push_prefab, transform.Find("Foot").position, transform.Find("Foot").rotation);
-                nextKeyTime = Time.time + timer_f;
-            }
-
-            else if (Input.GetKeyDown(Key_Fight))
-            {
-                if (!grounded)
+                if (Input.GetKeyDown(Key_Right))
                 {
-                    if (!anim.GetCurrentAnimatorStateInfo(0).IsName("down"))
-                    {
-                        anim.ResetTrigger("jumpR");
-                        anim.ResetTrigger("jumpL");
-                        anim.SetTrigger("down");
-                    }
-                    GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-                    GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -down_force));
+                    anim.ResetTrigger("jumpL");
+                    anim.ResetTrigger("down");
+                    anim.SetTrigger("jumpR");
+                    jumpR();
+                    Instantiate(push_prefab, transform.Find("Foot").position, transform.Find("Foot").rotation);
+                    nextKeyTime = Time.time + timer_f;
                 }
-                nextKeyTime = Time.time + timer_f;
-            }
-        }
-        #endregion
 
+                else if (Input.GetKeyDown(Key_Left))
+                {
+                    anim.ResetTrigger("jumpR");
+                    anim.ResetTrigger("down");
+                    anim.SetTrigger("jumpL");
+                    jumpL();
+                    Instantiate(push_prefab, transform.Find("Foot").position, transform.Find("Foot").rotation);
+                    nextKeyTime = Time.time + timer_f;
+                }
+
+                else if (Input.GetKeyDown(Key_Fight))
+                {
+                    if (!grounded)
+                    {
+                        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("down"))
+                        {
+                            anim.ResetTrigger("jumpR");
+                            anim.ResetTrigger("jumpL");
+                            anim.SetTrigger("down");
+                        }
+                        GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+                        GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -down_force));
+                    }
+                    nextKeyTime = Time.time + timer_f;
+                }
+            }
+            #endregion
+        }
 
         prePos = nowPos;
         nowPos = transform.position;
@@ -136,5 +141,10 @@ public class Control : MonoBehaviour
     {
         GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
         GetComponent<Rigidbody2D>().AddForce(new Vector2(-x_force, y_force));
+    }
+
+    public void SetControl(bool val)
+    {
+        canControl = val;
     }
 }
