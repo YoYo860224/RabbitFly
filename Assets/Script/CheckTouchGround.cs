@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CheckTouchGround: MonoBehaviour {
-    public Animator anim;
-    //[SerializeField] LayerMask whatIsGround;
-    public int combo;
-    public int bounce_force;
+
     public GameObject Rabbit;
+    public Animator anim;
+
+    public int combo;
+
 	// Use this for initialization
 	void Start () {
-        //anim = transform.Find("Main").GetComponent<Animator>();  //  Get From Public
+        // Rabbit = transform.parent.gameObject;                    //  Get From Public
+        // anim = transform.Find("Main").GetComponent<Animator>();  //  Get From Public
     }
 
     // Update is called once per frame
@@ -23,17 +25,16 @@ public class CheckTouchGround: MonoBehaviour {
         {
             if (collision.GetComponent<Collider2D>().isTrigger == false)
             {
-                anim.SetBool("isGround", true);
+                transform.parent.GetComponent<Control>().SetGround(true);
                 combo = 0;
             }
         }
             
         if(collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
-            Rabbit.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, bounce_force));
+            Rabbit.GetComponent<Control>().TopJump();
             combo++;
-        }
-            
+        }           
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -42,7 +43,7 @@ public class CheckTouchGround: MonoBehaviour {
         {
             if (collision.GetComponent<Collider2D>().isTrigger == false)
             {
-                anim.SetBool("isGround", true);
+                transform.parent.GetComponent<Control>().SetGround(true);
                 combo = 0;
             }
         }
@@ -52,8 +53,10 @@ public class CheckTouchGround: MonoBehaviour {
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
-            anim.SetBool("isGround", false);
+            transform.parent.GetComponent<Control>().SetGround(false);
         }
             
     }
 }
+
+//[SerializeField] LayerMask whatIsGround;

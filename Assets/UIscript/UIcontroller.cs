@@ -8,6 +8,7 @@ public class UIcontroller : MonoBehaviour {
 
     public GameObject gamePanel;
     public GameObject menuPanel;
+    public GameObject FinishPanel;
     public Text timerText;
     public Image blood1;
     public Image blood2;
@@ -27,7 +28,7 @@ public class UIcontroller : MonoBehaviour {
         timerText.text = " timer : " + ((int)timer).ToString();
     }
     public void restart() {
-        SceneManager.LoadScene("TestScene");
+        Application.LoadLevel(Application.loadedLevel);
         Time.timeScale = 1f;
     }
     public void resume(){//關閉menu遊戲繼續
@@ -39,6 +40,12 @@ public class UIcontroller : MonoBehaviour {
         menuPanel.SetActive(true);
         Time.timeScale = 0f;
     }
+
+    public void openFinish()
+    {
+        FinishPanel.SetActive(true);
+    }
+
     public void lifeMinus() {
         if (RabbitInfo.Instance.life == 2)
         {

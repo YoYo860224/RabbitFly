@@ -7,6 +7,7 @@ TagManager:
   - Rabbit
   - Ground
   - Trap
+  - broken
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - Trap
   - DeadBody
   - Enemy
-  - Stress
+  - RBtop
   - 
   - 
   - 

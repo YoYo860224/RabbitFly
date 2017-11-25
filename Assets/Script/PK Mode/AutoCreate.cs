@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class AutoCreate : MonoBehaviour {
     bool[,] theBroken = new bool [8,8];
-    float[] thePos = { -3.5f, -2.5f, -1.5f, -0.5f, 0.5f, 1.5f, 2.5f, 3.5f };
+//    float[] thePos = { -3.5f, -2.5f, -1.5f, -0.5f, 0.5f, 1.5f, 2.5f, 3.5f };
+    float[] thePos = { -2.5f,  -1.0f, 1.0f, 2.5f };
     public GameObject pre_Broken;
 
     public Vector3 start;
@@ -19,10 +20,10 @@ public class AutoCreate : MonoBehaviour {
 
         for (int i = 0; i < 100; i++)
         {
-            for (int j = 0; j < 8; j++)
+            for (int j = 0; j < 4; j++)
             {
-                if (Random.Range(0.0f, 1.0f) > 0.7f)
-                    Instantiate<GameObject>(pre_Broken, new Vector3(thePos[j], start.y + (float)i * 2.5f), pre_Broken.transform.rotation);
+                if (Random.Range(0.0f, 1.0f) > 0.5f)
+                    Instantiate<GameObject>(pre_Broken, new Vector3(thePos[j], start.y + (float)i * 4.5f), pre_Broken.transform.rotation);
             }
         }
 	}

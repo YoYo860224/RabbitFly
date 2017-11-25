@@ -15,7 +15,14 @@ public class PKlife : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+            Restart();
 
+    }
+
+    void Restart()
+    {
+        Application.LoadLevelAsync("PKMode");
     }
 
     public void GetHrut()
@@ -51,6 +58,16 @@ public class PKlife : MonoBehaviour
                 if (transform.position.y > collision.transform.position.y)
                     collision.gameObject.GetComponent<PKlife>().GetHrut();
             }
+            if (transform.Find("Main").GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("roundR"))
+            {
+                //if (transform.position.y < collision.transform.position.y)
+                    transform.gameObject.GetComponent<Control>().jumpR();
+            }
+            if (transform.Find("Main").GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("roundL"))
+            {
+                //if (transform.position.y < collision.transform.position.y)
+                    transform.gameObject.GetComponent<Control>().jumpL();
+            }
         }
     }
 
@@ -61,7 +78,10 @@ public class PKlife : MonoBehaviour
             if (transform.Find("Main").GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("down"))
             {
                 if (transform.position.y > collision.transform.position.y)
+                {
                     collision.gameObject.GetComponent<PKlife>().GetHrut();
+
+                }
             }
         }
 
