@@ -29,12 +29,29 @@ public class CheckTouchGround: MonoBehaviour {
                 combo = 0;
             }
         }
-            
-        if(collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+
+      /*  if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
-            Rabbit.GetComponent<Control>().TopJump();
-            combo++;
-        }           
+            if (anim.GetCurrentAnimatorStateInfo(0).IsName("down"))
+            {
+                transform.parent.gameObject.GetComponent<Control>().TopJump();
+                combo++;
+            }
+            else if (anim.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+            {
+                transform.parent.gameObject.GetComponent<Control>().TopJump();
+            }       
+            else if (anim.GetCurrentAnimatorStateInfo(0).IsName("roundR"))
+            {
+                transform.parent.gameObject.GetComponent<Control>().jumpR();
+            }
+            else if (anim.GetCurrentAnimatorStateInfo(0).IsName("roundL"))
+            {
+                transform.parent.gameObject.GetComponent<Control>().jumpL();
+            }
+        }
+
+    */
     }
 
     private void OnTriggerStay2D(Collider2D collision)

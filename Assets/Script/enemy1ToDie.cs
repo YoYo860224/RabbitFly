@@ -52,6 +52,8 @@ public class enemy1ToDie : MonoBehaviour {
             }
 
 
+            /*
+
             // keep form stuck_move
             if (nowRecordTimes < allRecordTimes)
             {
@@ -64,6 +66,8 @@ public class enemy1ToDie : MonoBehaviour {
                     GetComponent<SpriteRenderer>().flipX = !GetComponent<SpriteRenderer>().flipX;
                 ori_pos = transform.position.x;
             }
+
+            */
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -76,6 +80,14 @@ public class enemy1ToDie : MonoBehaviour {
                 {
                     collision.gameObject.GetComponent<RabbitInfo>().GetHrut();
                 }
+                else
+                {
+                    if (!isdead)
+                    {
+                        collision.gameObject.GetComponent<Control>().TopJump();
+                        EnemyDead();
+                    }
+                }
             }
         }
     }
@@ -84,23 +96,32 @@ public class enemy1ToDie : MonoBehaviour {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Rabbit"))
         {
             if (collision.gameObject.name == "Foot")
-            {    
-                    anim.SetTrigger("dead");
-                    isdead = true;
-                    Destroy(GetComponent<Collider2D>());
-                    Destroy(GetComponent<Rigidbody2D>());
-                    this.InvokeRepeating("DoFadeOut", 0.1f, 0.05f);
+            {
+                if (collision.transform.parent.Find("Main").GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("down"))
+                {
+                    if (!isdead)
+                    {
+                        collision.transform.parent.GetComponent<Control>().TopJump();
+                        EnemyDead();
+                    }
+                }
             }
         }
     }
 
+    private void EnemyDead()
+    {
+        anim.SetTrigger("dead");
+        isdead = true;
+        Destroy(GetComponent<Collider2D>());
+        Destroy(GetComponent<Rigidbody2D>());
+        this.InvokeRepeating("DoFadeOut", 0.1f, 0.05f);
+    }
+
     private void DoFadeOut()
     {
-        //Debug.Log("dead");
         GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, GetComponent<SpriteRenderer>().color.a - 0.03f);
         if (GetComponent<SpriteRenderer>().color.a < 0)
             Destroy(gameObject);
     }
-
-
 }
