@@ -84,6 +84,7 @@ public class enemy1ToDie : MonoBehaviour {
                 {
                     if (!isdead)
                     {
+                        collision.gameObject.GetComponent<RabbitInfo>().AddCombo();
                         collision.gameObject.GetComponent<Control>().TopJump();
                         EnemyDead();
                     }
@@ -101,6 +102,7 @@ public class enemy1ToDie : MonoBehaviour {
                 {
                     if (!isdead)
                     {
+                        collision.transform.parent.GetComponent<RabbitInfo>().AddCombo();
                         collision.transform.parent.GetComponent<Control>().TopJump();
                         EnemyDead();
                     }

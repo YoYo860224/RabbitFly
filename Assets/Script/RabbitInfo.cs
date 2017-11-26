@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RabbitInfo : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class RabbitInfo : MonoBehaviour
 
     public int maxLife;
     public int life;
+
+    public int combo;
+    public Text comboText;
 
     public float hurtTime = 1.0f;
 
@@ -66,6 +70,7 @@ public class RabbitInfo : MonoBehaviour
             {
                 life--;                                 // 實際扣血
                 UIcontroller.UIcontroll.lifeMinus();    // 扣血UI
+                ResetCombo();
 
                 // 受傷一閃一閃       
                 count_shine = 0;
@@ -94,6 +99,7 @@ public class RabbitInfo : MonoBehaviour
             {
                 life--;
                 UIcontroller.UIcontroll.lifeMinus();    //扣血UI
+                ResetCombo();
 
                 // 死亡動畫
                 GetComponent<Control>().enabled = false;
@@ -115,6 +121,12 @@ public class RabbitInfo : MonoBehaviour
 
     }
 
+    // for invoke return 
+    private void ReturnFalse()
+    {
+        gameObject.GetComponent<Control>().SetGround(false);
+    }
+
     // 一閃一閃亮晶晶
     private void Shine_Transparent()
     {
@@ -127,6 +139,26 @@ public class RabbitInfo : MonoBehaviour
         count_shine++;
     }
 
+
+    // for combo
+    public void AddCombo()
+    {
+        combo++;
+        comboText.enabled = true;
+        comboText.text = combo.ToString() + " Combo !!!!";
+        this.Invoke("disapearCombo", 1.5f);
+    }
+    public void ResetCombo()
+    {
+        combo = 0;
+    }
+
+    private void disapearCombo()
+    {
+        comboText.enabled = false;
+    }
+
+    // allllll collider
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Trap"))
@@ -159,9 +191,6 @@ public class RabbitInfo : MonoBehaviour
         }
     }
 
-    private void ReturnFalse()
-    {
-        gameObject.GetComponent<Control>().SetGround(false);
-    }
+
 
 }

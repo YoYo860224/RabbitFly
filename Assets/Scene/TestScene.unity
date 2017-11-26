@@ -5272,6 +5272,8 @@ MonoBehaviour:
   smoothpos_toReset: {fileID: 251189138}
   maxLife: 3
   life: 0
+  combo: 0
+  comboText: {fileID: 1014311861}
   hurtTime: 2
   anim: {fileID: 0}
 --- !u!1001 &1697179806
@@ -5368,7 +5370,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Rabbit: {fileID: 1639641713}
   anim: {fileID: 1936942040}
-  combo: 0
 --- !u!61 &1707702516
 BoxCollider2D:
   m_ObjectHideFlags: 0
