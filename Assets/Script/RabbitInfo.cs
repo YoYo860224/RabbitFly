@@ -165,6 +165,11 @@ public class RabbitInfo : MonoBehaviour
         {  
             GetHrut();
         }
+        else if (collision.gameObject.layer == LayerMask.NameToLayer("skill"))
+        {
+            GetHrut();
+            Destroy(collision.gameObject);
+        }
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -172,6 +177,11 @@ public class RabbitInfo : MonoBehaviour
         if (collision.gameObject.layer == LayerMask.NameToLayer("Trap"))
         {
             GetHrut();
+        }
+        else if (collision.gameObject.layer == LayerMask.NameToLayer("skill"))
+        {
+            GetHrut();
+            Destroy(collision.gameObject);
         }
     }
 
@@ -190,6 +200,7 @@ public class RabbitInfo : MonoBehaviour
             GetHrut();
         }
     }
+
 
 
 
