@@ -4,14 +4,19 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour {
     public GameObject theCamera;
-	// Use this for initialization
-	void Start () {
-		
-	}
+    public float TopDownOffset;
+    float nowTopDownOffset;
+    // Use this for initialization
+    void Start () {
+        nowTopDownOffset = TopDownOffset;
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
-        if (transform.position.y < 2.3f)
-            theCamera.transform.position = new Vector3(theCamera.transform.position.x, transform.position.y-2.3f , theCamera.transform.position.z);
+        nowTopDownOffset = Mathf.Lerp(nowTopDownOffset, TopDownOffset, 0.05f);
+
+        if (transform.position.y < nowTopDownOffset)
+            theCamera.transform.position = new Vector3(theCamera.transform.position.x, transform.position.y- nowTopDownOffset, theCamera.transform.position.z);
 	}
 }

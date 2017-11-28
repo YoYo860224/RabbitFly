@@ -26,8 +26,11 @@ public class UIcontroller : MonoBehaviour {
         UIcontroll = this;
     }
     void Update() {
-        timer += Time.deltaTime;
-        timerText.text = " timer : " + ((int)timer).ToString();
+        if (timerText)
+        {
+            timer += Time.deltaTime;
+            timerText.text = " timer : " + ((int)timer).ToString();
+        }
     }
     public void restart() {
         Application.LoadLevel(Application.loadedLevel);

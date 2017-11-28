@@ -24,9 +24,17 @@ public class homingMissile : MonoBehaviour {
         rb.angularVelocity = -rotateAmount * rotateSpeed;
         rb.velocity = transform.right * rocketSpeed;
 	}
-    void OnCollisionEnter2D()
+
+    public void Explode()
     {
+
         prefab = Instantiate(explosionEffect, transform.position, transform.rotation);
         Destroy(prefab, 2f);
+        Destroy(gameObject);
+    }
+
+    void OnCollisionEnter2D()
+    {
+        Explode();
     }
 }

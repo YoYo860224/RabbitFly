@@ -21,6 +21,10 @@ public class bossAction : MonoBehaviour {
     private BossActionType eCurState = BossActionType.idle;
     private BossActionType lastState = BossActionType.idle;
 
+
+    // fortest 2 time 1 sleep
+    int ttttttt = 0;
+
     public enum BossActionType
     {
         idle,
@@ -39,6 +43,7 @@ public class bossAction : MonoBehaviour {
         therocket.SetActive(false);
         stateIsDone = true;
         startAI();
+
         //test for function
         //this.Invoke("attackRocket",3.0f);
         //this.Invoke("attackFire", 3.0f);
@@ -48,32 +53,44 @@ public class bossAction : MonoBehaviour {
 
     private void startAI()
     {
-            if (eCurState == BossActionType.idle)
+        if (eCurState == BossActionType.idle)
+        {
+            do
             {
-                do
-                {
-                    eCurState = (BossActionType)Random.Range(1, 5);
-                } while (eCurState == lastState);
+                eCurState = (BossActionType)Random.Range(1, 5);
+            } while (eCurState == lastState);
 
-                switch (eCurState)
-                {
-                    case BossActionType.giveHurt:
-                        this.giveHurt();
-                        break;
-                    case BossActionType.sleeping:
-                        this.Sleep();
-                        break;
-                    case BossActionType.bossFire:
-                        this.attackFire();
-                        break;
-                    case BossActionType.bossRocket:
-                        this.attackRocket();
-                        break;
+            // for test/////////////////////////////////
+            ttttttt++;
+            if (ttttttt == 1)
+                eCurState = BossActionType.bossFire;
+            if (ttttttt == 2)
+                eCurState = BossActionType.sleeping;
+            if (ttttttt == 3)
+                eCurState = BossActionType.bossRocket;
+            if (ttttttt == 4)
+                eCurState = BossActionType.sleeping;
+            ////////////////////////////////////////////
 
-                }
-                lastState = eCurState;
-                eCurState = BossActionType.idle;
+            switch (eCurState)
+            {
+                case BossActionType.giveHurt:
+                    this.giveHurt();
+                    break;
+                case BossActionType.sleeping:
+                    this.Sleep();
+                    break;
+                case BossActionType.bossFire:
+                    this.attackFire();
+                    break;
+                case BossActionType.bossRocket:
+                    this.attackRocket();
+                    break;
+
             }
+            lastState = eCurState;
+            eCurState = BossActionType.idle;
+        }
     }
 	
     private void attackRocket()
@@ -100,7 +117,20 @@ public class bossAction : MonoBehaviour {
         GameObject rocketPrefab = Instantiate(therocket, therocket.transform.position, Quaternion.identity);
         rocketPrefab.transform.localScale = new Vector3(fireBall.transform.localScale.x * 0.3f, fireBall.transform.localScale.y * 0.3f, fireBall.transform.localScale.z * 0.3f);
         rocketPrefab.SetActive(true);
-        Destroy(rocketPrefab, rocketAutoDisappear);
+        StartCoroutine(rocketExplode(rocketPrefab, rocketAutoDisappear));
+       // Invoke("rocketExplode",  rocketAutoDisappear);
+    }
+
+    IEnumerator rocketExplode(GameObject rocket, float delayTime)
+    {
+        yield return new WaitForSeconds(delayTime);
+        if(rocket)
+            rocket.GetComponent<homingMissile>().Explode();
+    }
+
+    private void rocketExplode(GameObject rocket)
+    {
+        rocket.GetComponent<homingMissile>().Explode();
     }
 
     private void stopRocket()
@@ -185,22 +215,20 @@ public class bossAction : MonoBehaviour {
                             Time.timeScale = 0.3f; //slow motion for killing boss
                             anim.SetTrigger("dead");
                             this.Invoke("timeReset",1.0f);
+                            Camera.main.GetComponent<UIcontroller>().openFinish();
                             
                         }
-
                         else
                         {
                             anim.SetTrigger("getHurt");
+                            collision.gameObject.GetComponent<Control>().TopJump();
                             this.Invoke("startAI", 3.0f);
-                        }
-                           
-
-                            
+                        }                                                      
                     }
                     else // down
                         collision.gameObject.GetComponent<RabbitInfo>().GetHrut();
                 }
-                else
+                else if (!currentState.IsName("getHurt"))
                     collision.gameObject.GetComponent<RabbitInfo>().GetHrut();
             }
         }
@@ -221,7 +249,9 @@ public class bossAction : MonoBehaviour {
     void StopShaking()
     {
         CancelInvoke("CameraShake");
-        mainCamera.transform.position = originalCameraPosition;
+        Vector3 pp = mainCamera.transform.position;
+        pp.x = 0;
+        mainCamera.transform.position = pp;
     }
 
     // Update is called once per frame

@@ -24,7 +24,8 @@ public class CheckTouchGround: MonoBehaviour {
             if (collision.GetComponent<Collider2D>().isTrigger == false)
             {
                 transform.parent.GetComponent<Control>().SetGround(true);
-                transform.parent.GetComponent<RabbitInfo>().ResetCombo();
+                if(transform.parent.GetComponent<RabbitInfo>())
+                    transform.parent.GetComponent<RabbitInfo>().ResetCombo();
             }
         }
     }
@@ -36,7 +37,8 @@ public class CheckTouchGround: MonoBehaviour {
             if (collision.GetComponent<Collider2D>().isTrigger == false)
             {
                 transform.parent.GetComponent<Control>().SetGround(true);
-                transform.parent.GetComponent<RabbitInfo>().ResetCombo();
+                if (transform.parent.GetComponent<RabbitInfo>())
+                    transform.parent.GetComponent<RabbitInfo>().ResetCombo();
             }
         }
     }
