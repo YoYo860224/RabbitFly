@@ -9,12 +9,10 @@ public class PkCamara : MonoBehaviour {
     public Transform winner;
     public Transform loser;
 
-    public GameObject playerWinPanel;
-
-
     // Use this for initialization
-    void Start () {
-        playerWinPanel.SetActive(false);
+    void Start ()
+    {
+
     }
 
     // Update is called once per frame
@@ -40,7 +38,7 @@ public class PkCamara : MonoBehaviour {
             winner = player2;
             Time.timeScale = 0.3f;
             Invoke("OpenFinish", 1.0f);
-            playerWinPanel.SetActive(true);
+            UIcontroller.UIcontroll.delayDo("openFinish", 0.5f);
         }
 
         if (player2.Find("Main").gameObject.active == false)
@@ -48,13 +46,13 @@ public class PkCamara : MonoBehaviour {
             winner = player1;
             Time.timeScale = 0.3f;
             Invoke("OpenFinish", 1.0f);
-            playerWinPanel.SetActive(true);
+            UIcontroller.UIcontroll.delayDo("openFinish", 0.5f);
         }
     }
 
     public void OpenFinish()
     {
-        GetComponent<UIcontroller>().openFinish();
+        UIcontroller.UIcontroll.openFinish();
         Time.timeScale = 1.0f;
     }
 

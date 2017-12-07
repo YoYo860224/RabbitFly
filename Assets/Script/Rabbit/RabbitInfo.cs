@@ -5,42 +5,29 @@ using UnityEngine.UI;
 
 public class RabbitInfo : MonoBehaviour
 {
-    public GameObject camare_toReset;
-    public GameObject smoothpos_toReset;
-    //[SerializeField] LayerMask whatIsDead;
+    Animator anim;
 
+    [Header("Life Info")]
     public int maxLife;
     public int life;
 
-    public int combo;
-    public Text comboText;
-
+    [Header("Hurt Info")]
     public float hurtTime = 1.0f;
-
-    int count_shine;
+    int  count_shine;
     bool no_hurt = false;
 
-    public Animator anim;
+    [Header("Combo Info")]
+    public int combo;
 
-    public static RabbitInfo
-    Instance;
-    // Use this for initialization
     void Start()
     {
         life = maxLife;
-        Instance = this;
 
-        anim = transform.Find("Main").GetComponent<Animator>();  //  Get From Public
+        anim = transform.Find("Main").GetComponent<Animator>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            Restart();
-        }
-
         if (count_shine >= hurtTime / 0.2f )
         {
             CancelInvoke();
@@ -48,30 +35,17 @@ public class RabbitInfo : MonoBehaviour
         }
     }
 
-    void Restart()
-    {
-        transform.position = new Vector3(-7.79f, 1.29f, 0);
-        smoothpos_toReset.transform.position = new Vector3(0, 0, 0);
-        camare_toReset.transform.position = new Vector3(0, 0, -10);         
-        life = maxLife;
-        GetComponent<Control>().enabled = true;
-        transform.Find("Main").gameObject.SetActive(true);
-        transform.Find("Foot").gameObject.SetActive(true);
-        transform.Find("DeadBody").gameObject.SetActive(false);
-    }
-
     public void GetHrut()
     {
-        if (!no_hurt)
+        if (!no_hurt)       // 非受傷無敵狀態
         {
-            no_hurt = true;
+            no_hurt = true;                         // 開啟無敵
+            ResetCombo();                           // 取消 Combo
+            life--;                                 // 實際扣血
+            UIcontroller.UIcontroll.lifeMinus(life);    // 扣血UI
 
-            if (life > 1)    // 還有血量
+            if (life > 0)   // 還有血量
             {
-                life--;                                 // 實際扣血
-                UIcontroller.UIcontroll.lifeMinus();    // 扣血UI
-                ResetCombo();
-
                 // 受傷一閃一閃       
                 count_shine = 0;
                 InvokeRepeating("Shine_Transparent", 0.0f, 0.2f);
@@ -95,39 +69,23 @@ public class RabbitInfo : MonoBehaviour
                 }
 
             }
-            else  // 死亡
+            else // 已死亡
             {
-                life--;
-                UIcontroller.UIcontroll.lifeMinus();    //扣血UI
-                ResetCombo();
-
                 // 死亡動畫
                 GetComponent<Control>().enabled = false;
                 transform.Find("Main").gameObject.SetActive(false);
                 transform.Find("Foot").gameObject.SetActive(false);
                 transform.Find("DeadBody").gameObject.SetActive(true);
-
-                // 跳死亡選單
-                {
-
-                }
             }
         }
-        else
+        else // 是受傷無敵狀態
         {
-            gameObject.GetComponent<Control>().SetGround(true);
-            Invoke("ReturnFalse", 0.1f);
+
         }
 
     }
 
-    // for invoke return 
-    private void ReturnFalse()
-    {
-        gameObject.GetComponent<Control>().SetGround(false);
-    }
-
-    // 一閃一閃亮晶晶
+    // 受傷之一閃一閃亮晶晶
     private void Shine_Transparent()
     {
         transform.Find("Main").gameObject.GetComponent<SpriteRenderer>().color = new Color32(0, 0, 0, 0);
@@ -139,55 +97,53 @@ public class RabbitInfo : MonoBehaviour
         count_shine++;
     }
 
-
     // for combo
     public void AddCombo()
     {
         combo++;
-        comboText.enabled = true;
-        comboText.text = combo.ToString() + " Combo !!!!";
-        this.Invoke("disapearCombo", 1.5f);
+        UIcontroller.UIcontroll.SetCombo(combo);
     }
     public void ResetCombo()
     {
-        combo = 0;
+        if (combo > 0)
+        {
+            combo = 0;
+            UIcontroller.UIcontroll.SetCombo(combo);
+        }
     }
 
-    private void disapearCombo()
-    {
-        comboText.enabled = false;
-    }
-
-    // allllll collider
+    // all collider 關於 trap
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Trap"))
-        {  
+        if (collision.gameObject.layer == LayerMask.NameToLayer("nt_ColliderTrap"))
+        {
             GetHrut();
         }
         else if (collision.gameObject.layer == LayerMask.NameToLayer("skill"))
         {
-            GetHrut();
-            Destroy(collision.gameObject);
+             GetHrut();
+             Destroy(collision.gameObject);
         }
     }
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Trap"))
+       
+        if (collision.gameObject.layer == LayerMask.NameToLayer("nt_ColliderTrap"))
         {
             GetHrut();
         }
-        else if (collision.gameObject.layer == LayerMask.NameToLayer("skill"))
-        {
-            GetHrut();
-            Destroy(collision.gameObject);
-        }
+       // else if (collision.gameObject.layer == LayerMask.NameToLayer("skill"))
+       // {
+       //     GetHrut();
+       //     Destroy(collision.gameObject);
+       // }
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.layer == LayerMask.NameToLayer("Laser"))
+   
+        if (collider.gameObject.layer == LayerMask.NameToLayer("nt_TriggerTrap"))
         {
             GetHrut();
         }
@@ -195,13 +151,10 @@ public class RabbitInfo : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collider)
     {
-        if (collider.gameObject.layer == LayerMask.NameToLayer("Laser"))
+
+        if (collider.gameObject.layer == LayerMask.NameToLayer("nt_TriggerTrap"))
         {
             GetHrut();
         }
     }
-
-
-
-
 }

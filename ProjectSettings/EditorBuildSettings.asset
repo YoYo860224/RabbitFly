@@ -9,17 +9,20 @@ EditorBuildSettings:
     path: 
     guid: 054a62cbeae386a4884ea0fc5760375c
   - enabled: 1
-    path: Assets/Scene/TestScene.unity
-    guid: ef699e59972fc6243b3fb0d81f726322
-  - enabled: 1
-    path: Assets/Scene/PKMode.unity
-    guid: c29275a2ac074b847b543ed52da09180
-  - enabled: 1
-    path: Assets/Scene/menuScene.unity
+    path: Assets/Scene/UI/menuScene.unity
     guid: 8d6a88cc6e04b8f40b6933c9e4eabb2f
   - enabled: 1
-    path: Assets/Scene/bossScene.unity
-    guid: 7330b3a0219378d4384321a125042946
-  - enabled: 1
-    path: Assets/Scene/chooseScene.unity
+    path: Assets/Scene/UI/chooseScene.unity
     guid: 06eee1faf4dcddd4a9f86e4b65f03439
+  - enabled: 1
+    path: Assets/Scene/Beta/PKMode.unity
+    guid: c29275a2ac074b847b543ed52da09180
+  - enabled: 1
+    path: Assets/Scene/Test/AllBossTest.unity
+    guid: 5d7dab8ecd809314b851a6ee439f3293
+  - enabled: 1
+    path: Assets/Scene/Test/AllEnemyTest.unity
+    guid: cf4b2fe6f2f636d44a18ed79ae0b9389
+  - enabled: 1
+    path: Assets/Scene/Test/AllTrapTest.unity
+    guid: dc26943551d55be4284567087b493752

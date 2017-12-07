@@ -27,3 +27,11 @@ By NTUST CSIE Student:
 
 * add Layer and Tag to what You want do
 * Build with PC 
+
+# Info
+* 除了 brokePlatform 其他的機關觸發腳本皆在 rabbit 下面，皆以 layer 判別
+* 結束 UI 不寫在 Rabbit 裡，由 UI 管 UI
+* 現在在兔子裡 CheckTouchGround 和 GroundCheck 一樣功能，但還是先不要刪掉
+# Some prefab need set
+* platform_cont
+    * 可以拉長，但記得改 Collider 的長度

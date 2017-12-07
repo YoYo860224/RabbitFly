@@ -20,32 +20,37 @@ public class chooseStage : MonoBehaviour {
         {
             this.GetComponent<Animator>().SetBool("hitCarrot", true);
             this.Invoke("changeChoose", 0.7f);
-            this.Invoke("loadchoose", 2.0f);
+            this.Invoke("loadStage1", 2.0f);
         }
         else if (collision.gameObject.name == "Rabbit" && gameObject.name == "stage2")
         {
             this.GetComponent<Animator>().SetBool("hitCarrot", true);
             this.Invoke("changeChoose", 0.7f);
-            this.Invoke("loadchoose", 2.0f);
+            this.Invoke("loadStage2", 2.0f);
         }
         else if (collision.gameObject.name == "Rabbit" && gameObject.name == "stage3")
         {
             this.GetComponent<Animator>().SetBool("hitCarrot", true);
             this.Invoke("changeChoose", 0.7f);
-            this.Invoke("loadBoSS", 2.0f);
+            this.Invoke("loadStage3", 2.0f);
 
         }
     }
     private void changeChoose(){
         changeChoosePanel.SetActive(true);
     }
-    private void loadchoose()
+    private void loadStage1()
     {
-        SceneManager.LoadSceneAsync("TestScene");
+        SceneManager.LoadSceneAsync("AllTrapTest");
     }
 
-    private void loadBoSS()
+    private void loadStage2()
     {
-        SceneManager.LoadSceneAsync("bossScene"); 
+        SceneManager.LoadSceneAsync("AllEnemyTest");
+    }
+
+    private void loadStage3()
+    {
+        SceneManager.LoadSceneAsync("AllBossTest"); 
     }
 }

@@ -18,13 +18,7 @@ TagManager:
   - 
   - 
   - Rabbit
-  - Ground
-  - Trap
   - DeadBody
-  - Enemy
-  - RBtop
-  - Laser
-  - skill
   - 
   - 
   - 
@@ -37,7 +31,13 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - nt_Ground
+  - nt_BaseWall
+  - nt_ColliderTrap
+  - nt_TriggerTrap
+  - nt_ColliderEnemy
+  - nt_TriggerEnemy
+  - Skill
   - 
   - 
   - 
@@ -48,9 +48,18 @@ TagManager:
   - name: BackGround
     uniqueID: 478326527
     locked: 0
-  - name: Enemy
+  - name: BasePlatform
     uniqueID: 3477893095
     locked: 0
-  - name: Player
+  - name: Enemy
+    uniqueID: 2114575365
+    locked: 0
+  - name: Trap
+    uniqueID: 1375378511
+    locked: 0
+  - name: Rabbit
     uniqueID: 1182446285
+    locked: 0
+  - name: Decorator
+    uniqueID: 3626856463
     locked: 0

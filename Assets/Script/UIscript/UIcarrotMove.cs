@@ -31,7 +31,12 @@ public class UIcarrotMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isdead)
+      
+        
+        
+        
+        
+        /* if (!isdead)
         {
             // 換方向
             if (transform.position.x < initx - moveL)
@@ -67,5 +72,7 @@ public class UIcarrotMove : MonoBehaviour
                 ori_pos = transform.position.x;
             }
         }
+
+    */
     }
 }

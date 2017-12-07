@@ -145,7 +145,7 @@ public class bossAction : MonoBehaviour {
     {
         fire.SetActive(true);
         this.Invoke("fireShoot", timeToUseSkill);
-        originalCameraPosition = mainCamera.transform.position;
+        originalCameraPosition = Camera.main.transform.position;
         this.InvokeRepeating("CameraShake", 0, 0.01f);
         this.Invoke("StopShaking", timeToUseSkill);
         anim.SetTrigger("ready");
@@ -165,7 +165,8 @@ public class bossAction : MonoBehaviour {
         GameObject ballPrefab = Instantiate(fireBall, fireBall.transform.position, Quaternion.identity);
         ballPrefab.transform.localScale = new Vector3(fireBall.transform.localScale.x * 0.1f, fireBall.transform.localScale.y * 0.1f, fireBall.transform.localScale.z * 0.1f);
         ballPrefab.SetActive(true);
-        Vector3 offset = GameObject.FindGameObjectWithTag("Rabbit").transform.position - ballPrefab.transform.position;
+        Vector3 offset = GameObject.Find("Rabbit").transform.position - ballPrefab.transform.position;
+        Debug.Log(offset);
         Vector3 direction = offset.normalized;
         float power = offset.magnitude;
         ballPrefab.GetComponent<Rigidbody2D>().AddForce(direction * power * fireBallSpeed);
@@ -241,17 +242,17 @@ public class bossAction : MonoBehaviour {
     void CameraShake()
     {
         float quakeAmt = Random.value * shakeAmt * 2 - shakeAmt;
-        Vector3 pp = mainCamera.transform.position;
+        Vector3 pp = Camera.main.transform.position;
         pp.x += quakeAmt;
-        mainCamera.transform.position = pp;
+        Camera.main.transform.position = pp;
     }
 
     void StopShaking()
     {
         CancelInvoke("CameraShake");
-        Vector3 pp = mainCamera.transform.position;
+        Vector3 pp = Camera.main.transform.position;
         pp.x = 0;
-        mainCamera.transform.position = pp;
+        Camera.main.transform.position = pp;
     }
 
     // Update is called once per frame

@@ -31,7 +31,7 @@ public class PKlife : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Trap"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("nt_TriggerTrap"))
         {
             if (GetComponent<Control>().grounded)
                 GetHrut();

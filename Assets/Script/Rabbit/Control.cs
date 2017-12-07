@@ -4,44 +4,43 @@ using UnityEngine;
 
 public class Control : MonoBehaviour
 {
-    //  get animator
-    public Animator anim;
-    public GameObject push_prefab;
+    Animator anim;
 
-    // force Control
-    public int x_force;
-    public int y_force;
-    public int down_force;
-
-    public int normal_Speed_Limit;
-    public int superDown_Speed_Limit;
-
-    // Top Jump
-    public float jump_force;
-
-    // Key Setting
+    [Header("Key Setting")]
+    public bool canControl = true;
     public KeyCode Key_Right = KeyCode.D;
     public KeyCode Key_Left = KeyCode.A;
     public KeyCode Key_Fight = KeyCode.S;
 
+    [Header("pushModel")]
+    public GameObject push_prefab;
+
+    [Header("Speed and Force Control")]
+    public int x_force;
+    public int y_force;
+    public int down_force;
+    public float jump_force;
+
+    public int normal_Speed_Limit;
+    public int superDown_Speed_Limit;
+
+    [Header("Debug To See")]
     //  checkGround
     public bool grounded = false;
-
-    // canControl
-    public bool canControl = true;
 
     //  Find Heightest
     Vector3 prePos;
     Vector3 nowPos;
 
-    // delayT for keep from cheat
+    // delayTime for keep from cheat
     float timer_f = 0.02f;
     float nextKeyTime = 0.0f;
 
     // Use this for initialization
     void Start()
     {
-        //anim = transform.Find("Main").GetComponent<Animator>();  //  Get From Public
+        anim = transform.Find("Main").GetComponent<Animator>();
+
         prePos = transform.position;
         nowPos = transform.position;
     }
@@ -95,6 +94,7 @@ public class Control : MonoBehaviour
             #endregion
         }
 
+        // 檢查是否下降
         prePos = nowPos;
         nowPos = transform.position;
 
@@ -104,6 +104,7 @@ public class Control : MonoBehaviour
             anim.SetBool("Be_fallRound", false);
 
 
+        // 固定下降速度
         if (anim.GetCurrentAnimatorStateInfo(0).IsName("down"))
         {
             if (GetComponent<Rigidbody2D>().velocity.y < -superDown_Speed_Limit)
@@ -121,11 +122,15 @@ public class Control : MonoBehaviour
         grounded = value;
     }
 
+    public void SetControl(bool val)
+    {
+        canControl = val;
+    }
+
     public void TopJump()
     {
         GetComponent<Rigidbody2D>().AddForce(new Vector2(0, jump_force));
     }
-
     public void TopJump(float force)
     {
         GetComponent<Rigidbody2D>().AddForce(new Vector2(0, force));
@@ -136,15 +141,11 @@ public class Control : MonoBehaviour
         GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
         GetComponent<Rigidbody2D>().AddForce(new Vector2(x_force, y_force));
     }
-
     public void jumpL()
     {
         GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
         GetComponent<Rigidbody2D>().AddForce(new Vector2(-x_force, y_force));
     }
 
-    public void SetControl(bool val)
-    {
-        canControl = val;
-    }
+    
 }
