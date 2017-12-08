@@ -179,7 +179,7 @@ public class bossAction : MonoBehaviour {
     private void Finish()
     {
         Time.timeScale = 1.0f;
-        GameObject.Find("UI").GetComponent<UIcontroller>().openFinish();
+        GameObject.Find("UI").GetComponent<UIcontroller>().openWin();
     }
 
     private void Sleep()
