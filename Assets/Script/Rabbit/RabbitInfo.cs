@@ -35,7 +35,8 @@ public class RabbitInfo : MonoBehaviour
         }
     }
 
-    public void GetHrut()
+    // if no hurt will return false
+    public bool GetHrut()
     {
         if (!no_hurt)       // 非受傷無敵狀態
         {
@@ -77,12 +78,12 @@ public class RabbitInfo : MonoBehaviour
                 transform.Find("Foot").gameObject.SetActive(false);
                 transform.Find("DeadBody").gameObject.SetActive(true);
             }
+            return true;
         }
         else // 是受傷無敵狀態
         {
-
+            return false;
         }
-
     }
 
     // 受傷之一閃一閃亮晶晶
@@ -119,30 +120,18 @@ public class RabbitInfo : MonoBehaviour
         {
             GetHrut();
         }
-        else if (collision.gameObject.layer == LayerMask.NameToLayer("skill"))
-        {
-             GetHrut();
-             Destroy(collision.gameObject);
-        }
     }
 
     private void OnCollisionStay2D(Collision2D collision)
-    {
-       
+    {      
         if (collision.gameObject.layer == LayerMask.NameToLayer("nt_ColliderTrap"))
         {
             GetHrut();
         }
-       // else if (collision.gameObject.layer == LayerMask.NameToLayer("skill"))
-       // {
-       //     GetHrut();
-       //     Destroy(collision.gameObject);
-       // }
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-   
         if (collider.gameObject.layer == LayerMask.NameToLayer("nt_TriggerTrap"))
         {
             GetHrut();
@@ -151,7 +140,6 @@ public class RabbitInfo : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collider)
     {
-
         if (collider.gameObject.layer == LayerMask.NameToLayer("nt_TriggerTrap"))
         {
             GetHrut();

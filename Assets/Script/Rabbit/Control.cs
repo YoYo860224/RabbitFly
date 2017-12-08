@@ -129,10 +129,12 @@ public class Control : MonoBehaviour
 
     public void TopJump()
     {
+        GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
         GetComponent<Rigidbody2D>().AddForce(new Vector2(0, jump_force));
     }
     public void TopJump(float force)
     {
+        GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
         GetComponent<Rigidbody2D>().AddForce(new Vector2(0, force));
     }
 

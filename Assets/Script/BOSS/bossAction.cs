@@ -3,21 +3,36 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class bossAction : MonoBehaviour {
-    public bool stateIsDone;
-    public float fireBallSpeed = 10f;
-    public int fireBallNumber;
-    public float theRocketNumber;
-    public float rocketAutoDisappear;
-    public int hp;
-    public int timeToUseSkill;
-    public Camera mainCamera;
     public Animator anim;
-    public GameObject fire;
-    public GameObject fireBall;
-    public GameObject rocket;
-    public GameObject therocket;
-    Vector3 originalCameraPosition;
-    float shakeAmt = 0.1f;
+
+    [Header("Info")]
+    public int max_hp;
+    public int hp;
+    public int readyTime;
+    public float weakTime = 2.0f;
+    bool weakState;
+
+    [Header("Skill_Rocket")]
+    public float rocketSpeed = 5.0f;
+    public float rocketLifeTime = 10.0f;
+    public float perRocketTime;
+    public float allRocketTime;
+
+    public GameObject rocketIcon;
+    public GameObject rocket_prefab;
+    public GameObject rocket_position;
+
+    [Header("Skill_FireBall")]
+    public float fireBallSpeed = 5.0f;
+    public float perFireBallTime;
+    public float allFireBallTime;
+
+    public GameObject fireIcon;
+    public GameObject fireBall_prefab;
+    public GameObject fireBall_position;
+
+
+
     private BossActionType eCurState = BossActionType.idle;
     private BossActionType lastState = BossActionType.idle;
 
@@ -29,7 +44,6 @@ public class bossAction : MonoBehaviour {
     {
         idle,
         sleeping,
-        giveHurt,
         bossRocket,
         bossFire
     }
@@ -37,12 +51,11 @@ public class bossAction : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        fire.SetActive(false);
-        fireBall.SetActive(false);
-        rocket.SetActive(false);
-        therocket.SetActive(false);
-        stateIsDone = true;
-        startAI();
+        fireIcon.SetActive(false);
+        rocketIcon.SetActive(false);
+        hp = max_hp;
+
+        //startAI();
 
         //test for function
         //this.Invoke("attackRocket",3.0f);
@@ -51,210 +64,234 @@ public class bossAction : MonoBehaviour {
         //this.Invoke("giveHurt",3.0f);
     }
 
-    private void startAI()
+    public void startAI()
     {
         if (eCurState == BossActionType.idle)
         {
             do
             {
-                eCurState = (BossActionType)Random.Range(1, 5);
+                eCurState = (BossActionType)Random.Range(1, 4);
             } while (eCurState == lastState);
 
             // for test/////////////////////////////////
             ttttttt++;
             if (ttttttt == 1)
-                eCurState = BossActionType.bossFire;
-            if (ttttttt == 2)
-                eCurState = BossActionType.sleeping;
-            if (ttttttt == 3)
                 eCurState = BossActionType.bossRocket;
-            if (ttttttt == 4)
+            if (ttttttt == 2)
+                eCurState = BossActionType.bossFire;
+            if (ttttttt == 3)
                 eCurState = BossActionType.sleeping;
             ////////////////////////////////////////////
 
             switch (eCurState)
             {
-                case BossActionType.giveHurt:
-                    this.giveHurt();
-                    break;
                 case BossActionType.sleeping:
                     this.Sleep();
                     break;
                 case BossActionType.bossFire:
-                    this.attackFire();
+                    this.ReadyFire();
                     break;
                 case BossActionType.bossRocket:
-                    this.attackRocket();
+                    this.ReadyRocket();
                     break;
-
             }
             lastState = eCurState;
             eCurState = BossActionType.idle;
         }
     }
-	
-    private void attackRocket()
+
+    // rocket
+
+    private void ReadyRocket()
     {
-        rocket.SetActive(true);
-        this.Invoke("rocketShoot", timeToUseSkill);
-        originalCameraPosition = mainCamera.transform.position;
-        this.InvokeRepeating("CameraShake", 0, 0.01f);
-        this.Invoke("StopShaking", timeToUseSkill);
+        rocketIcon.SetActive(true);
         anim.SetTrigger("ready");
+        Invoke("UsingRocket", readyTime);
     }
 
-    private void rocketShoot()
+    private void UsingRocket()
     {
-        rocket.SetActive(false);
         anim.SetTrigger("rocket");
-        this.InvokeRepeating("rocketShooting", 0.1f, 1.5f);
-        this.Invoke("stopRocket", 1.5f * theRocketNumber);
+        InvokeRepeating("MakeRocket", 0.1f, perRocketTime);
+        Invoke("StopRocket", allRocketTime);
     }
 
-    private void rocketShooting()
+    private void MakeRocket()
     {
-        therocket.SetActive(false);
-        GameObject rocketPrefab = Instantiate(therocket, therocket.transform.position, Quaternion.identity);
-        rocketPrefab.transform.localScale = new Vector3(fireBall.transform.localScale.x * 0.3f, fireBall.transform.localScale.y * 0.3f, fireBall.transform.localScale.z * 0.3f);
-        rocketPrefab.SetActive(true);
-        StartCoroutine(rocketExplode(rocketPrefab, rocketAutoDisappear));
-       // Invoke("rocketExplode",  rocketAutoDisappear);
+        GameObject rocketPrefab = Instantiate(rocket_prefab, rocket_position.transform.position, Quaternion.identity);
+        StartCoroutine(rocketExplode(rocketPrefab, rocketLifeTime));
     }
 
     IEnumerator rocketExplode(GameObject rocket, float delayTime)
     {
         yield return new WaitForSeconds(delayTime);
-        if(rocket)
-            rocket.GetComponent<homingMissile>().Explode();
+        if (rocket)
+            rocket.GetComponent<TheRocket>().Explode();
     }
 
     private void rocketExplode(GameObject rocket)
     {
-        rocket.GetComponent<homingMissile>().Explode();
+        rocket.GetComponent<TheRocket>().Explode();
     }
 
-    private void stopRocket()
+    private void StopRocket()
     {
-        CancelInvoke("rocketShooting");
+        rocketIcon.SetActive(false);
         anim.SetTrigger("toIdle");
+        CancelInvoke("MakeRocket");
+       
         ///AI
         startAI();
     }
 
-    private void attackFire()
+    // fireBall
+
+    private void ReadyFire()
     {
-        fire.SetActive(true);
-        this.Invoke("fireShoot", timeToUseSkill);
-        originalCameraPosition = Camera.main.transform.position;
-        this.InvokeRepeating("CameraShake", 0, 0.01f);
-        this.Invoke("StopShaking", timeToUseSkill);
+        fireIcon.SetActive(true);       
         anim.SetTrigger("ready");
+        Invoke("UsingFire", readyTime);
     }
 
-    private void fireShoot()
+    private void UsingFire()
     {
-        fire.SetActive(false);
         anim.SetTrigger("fire");
-        //originalCameraPosition = mainCamera.transform.position;
-        this.InvokeRepeating("fireShooting", 0.1f, 1.0f);
-        this.Invoke("stopFire", fireBallNumber);       
+        InvokeRepeating("MakeFire", 0.1f, perFireBallTime);
+        Invoke("StopFire", allFireBallTime);       
     }
 
-    void fireShooting()
+    void MakeFire()
     {
-        GameObject ballPrefab = Instantiate(fireBall, fireBall.transform.position, Quaternion.identity);
-        ballPrefab.transform.localScale = new Vector3(fireBall.transform.localScale.x * 0.1f, fireBall.transform.localScale.y * 0.1f, fireBall.transform.localScale.z * 0.1f);
-        ballPrefab.SetActive(true);
-        Vector3 offset = GameObject.Find("Rabbit").transform.position - ballPrefab.transform.position;
-        Debug.Log(offset);
-        Vector3 direction = offset.normalized;
-        float power = offset.magnitude;
-        ballPrefab.GetComponent<Rigidbody2D>().AddForce(direction * power * fireBallSpeed);
+        GameObject ballPrefab = Instantiate(fireBall_prefab, fireBall_position.transform.position, Quaternion.identity);
+        ballPrefab.GetComponent<TheFireBall>().SetSpeed(fireBallSpeed);      
     }
 
-    void stopFire()
+    void StopFire()
     {
-        CancelInvoke("fireShooting");
+        fireIcon.SetActive(false);
         anim.SetTrigger("toIdle");
+        CancelInvoke("MakeFire");
+
         ///AI
         startAI();
+    }
+
+    private void Finish()
+    {
+        Time.timeScale = 1.0f;
+        GameObject.Find("UI").GetComponent<UIcontroller>().openFinish();
     }
 
     private void Sleep()
     {
         anim.SetTrigger("setSleeping");
-        ///for (int i = 0; i < 70; i++)
-           // this.transform.position = new Vector2(this.transform.position.x, this.transform.position.y - 0.01f);
     }
 
-    private void giveHurt()
+    // 受傷之類的
+    private void GetHurt(Collision2D collision)
     {
-        anim.SetTrigger("giveHurt");
-        originalCameraPosition = mainCamera.transform.position;
-        InvokeRepeating("CameraShake", 0, 0.01f);
-        Invoke("StopShaking", 5.0f);
-        //
-        Invoke("startAI", 5.0f);
+        hp--;
+        if (hp > 0)
+        {
+            anim.SetTrigger("getHurt");
+            collision.gameObject.GetComponent<Control>().TopJump();
+
+            weakState = true;
+            InvokeRepeating("Shine_Transparent", 0.0f, 0.2f);
+            Invoke("CancelWeak", weakTime);
+
+            this.Invoke("startAI", 3.0f);
+        }
+        else
+        {
+            Dead();
+        }
+    }
+
+    private void Dead()
+    {
+        gameObject.layer = LayerMask.NameToLayer("DeadBody");
+        anim.SetTrigger("dead");
+        Time.timeScale = 0.3f;          //slow motion for killing boss       
+        this.Invoke("Finish", 1.0f);    //will Return in here
+    }
+
+    // 虛弱之一閃一閃亮晶晶
+    private void CancelWeak()
+    {
+        CancelInvoke("Shine_Transparent");
+        CancelInvoke("Shine_White");
+        weakState = false;
+    }
+
+    private void Shine_Transparent()
+    {
+       GetComponent<SpriteRenderer>().color = new Color32(0, 0, 0, 0);
+        Invoke("Shine_White", 0.1f);
+    }
+    private void Shine_White()
+    {
+        GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 255);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Rabbit"))
         {
-            if (collision.gameObject.name == "Rabbit" || collision.gameObject.name == "Foot")
+            AnimatorStateInfo currentState = anim.GetCurrentAnimatorStateInfo(0);
+            if (currentState.IsName("sleeping") || currentState.IsName("sleeped"))      // 在睡覺才會受傷
             {
-                AnimatorStateInfo currentState = anim.GetCurrentAnimatorStateInfo(0);
-                if (currentState.IsName("sleeping") || currentState.IsName("sleeped"))
+                if (collision.transform.Find("Main").GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("down")) // 要向下衝才會受傷
                 {
-                    if (collision.transform.Find("Main").GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("down")) //down
-                    {
-                        hp--;
-                        if (hp <= 0)
-                        {
-                            //Destroy(GetComponent<spriteChange>());
-                            gameObject.layer = LayerMask.NameToLayer("DeadBody");
-                            Time.timeScale = 0.3f; //slow motion for killing boss
-                            anim.SetTrigger("dead");
-                            this.Invoke("timeReset",1.0f);
-                            Camera.main.GetComponent<UIcontroller>().openFinish();
-                            
-                        }
-                        else
-                        {
-                            anim.SetTrigger("getHurt");
-                            collision.gameObject.GetComponent<Control>().TopJump();
-                            this.Invoke("startAI", 3.0f);
-                        }                                                      
-                    }
-                    else // down
-                        collision.gameObject.GetComponent<RabbitInfo>().GetHrut();
+                    GetHurt(collision);
                 }
-                else if (!currentState.IsName("getHurt"))
-                    collision.gameObject.GetComponent<RabbitInfo>().GetHrut();
+                else // down
+                {
+                    if (!weakState)
+                        if (!collision.gameObject.GetComponent<RabbitInfo>().GetHrut())
+                            collision.gameObject.GetComponent<Control>().TopJump();
+                }
+            }
+            else if (!weakState)
+            {
+                if (!collision.gameObject.GetComponent<RabbitInfo>().GetHrut())
+                    collision.gameObject.GetComponent<Control>().TopJump();
+            }
+            else
+            {
+                collision.gameObject.GetComponent<Control>().TopJump();
             }
         }
     }
-    private void timeReset()
-    {
-        Time.timeScale = 1.0f;
-    }
 
-    void CameraShake()
+    private void OnCollisionStay2D(Collision2D collision)
     {
-        float quakeAmt = Random.value * shakeAmt * 2 - shakeAmt;
-        Vector3 pp = Camera.main.transform.position;
-        pp.x += quakeAmt;
-        Camera.main.transform.position = pp;
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Rabbit"))
+        {
+            AnimatorStateInfo currentState = anim.GetCurrentAnimatorStateInfo(0);
+            if (currentState.IsName("sleeping") || currentState.IsName("sleeped"))      // 在睡覺才會受傷
+            {
+                if (collision.transform.Find("Main").GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("down")) // 要向下衝才會受傷
+                {
+                    GetHurt(collision);
+                }
+                else // down
+                {
+                    if (!weakState)
+                        if (!collision.gameObject.GetComponent<RabbitInfo>().GetHrut()) // 非受傷狀態會 return false
+                            collision.gameObject.GetComponent<Control>().TopJump();     // 所以讓他跳一下 不會停在那
+                }
+            }
+            else if (!weakState)
+            {
+                if (!collision.gameObject.GetComponent<RabbitInfo>().GetHrut())
+                    collision.gameObject.GetComponent<Control>().TopJump();
+            }
+            else
+            {
+                collision.gameObject.GetComponent<Control>().TopJump();                 // 他一閃一閃的時候不要讓兔子 馬上受傷 也讓他跳一下 不會停在那
+            }
+        }
     }
-
-    void StopShaking()
-    {
-        CancelInvoke("CameraShake");
-        Vector3 pp = Camera.main.transform.position;
-        pp.x = 0;
-        Camera.main.transform.position = pp;
-    }
-
-    // Update is called once per frame
 
 }

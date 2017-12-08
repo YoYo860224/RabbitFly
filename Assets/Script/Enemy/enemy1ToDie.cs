@@ -78,7 +78,29 @@ public class enemy1ToDie : MonoBehaviour {
             }
         }
     }
-  
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Rabbit"))
+        {
+
+            if (!collision.transform.Find("Main").GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("down"))
+            {
+                if (!collision.gameObject.GetComponent<RabbitInfo>().GetHrut())
+                    collision.gameObject.GetComponent<Control>().TopJump();
+            }
+            else
+            {
+                if (!isdead)
+                {
+                    collision.gameObject.GetComponent<RabbitInfo>().AddCombo();
+                    collision.gameObject.GetComponent<Control>().TopJump();
+                    EnemyDead();
+                }
+            }
+        }
+    }
+
     private void EnemyDead()
     {
         anim.SetTrigger("dead");
@@ -95,25 +117,3 @@ public class enemy1ToDie : MonoBehaviour {
             Destroy(gameObject);
     }
  }
-
-
-/*
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Rabbit"))
-        {
-            if (collision.gameObject.name == "Foot")
-            {
-                if (collision.transform.parent.Find("Main").GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("down"))
-                {
-                    if (!isdead)
-                    {
-                        collision.transform.parent.GetComponent<RabbitInfo>().AddCombo();
-                        collision.transform.parent.GetComponent<Control>().TopJump();
-                        EnemyDead();
-                    }
-                }
-            }
-        }
-    }
-    */

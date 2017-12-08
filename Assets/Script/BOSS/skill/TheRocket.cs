@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class homingMissile : MonoBehaviour {
+public class TheRocket : MonoBehaviour {
     public Transform target;
     public float rocketSpeed = 5f;
     public float rotateSpeed = 200f;
@@ -12,7 +12,7 @@ public class homingMissile : MonoBehaviour {
     public GameObject explosionEffect;
 	// Use this for initialization
 	void Start () {
-        
+        target = GameObject.Find("Rabbit").transform;
         rb = GetComponent<Rigidbody2D>();
 	}
 	
@@ -33,8 +33,12 @@ public class homingMissile : MonoBehaviour {
         Destroy(gameObject);
     }
 
-    void OnCollisionEnter2D()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Rabbit"))
+        {
+            collision.gameObject.GetComponent<RabbitInfo>().GetHrut();
+        }
         Explode();
     }
 }
