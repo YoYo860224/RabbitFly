@@ -1,8 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using UnityEditor;
-
 
 
 public class enemy1ToDie : MonoBehaviour {
@@ -16,19 +14,6 @@ public class enemy1ToDie : MonoBehaviour {
     public float moveL = 1.0f;
     public float speed = 0.5f;
 
-    /*
-    // draw sceneLine
-    [CustomEditor(typeof(enemy1ToDie))]
-    class ddLine : Editor
-    {
-        void OnSceneGUI()
-        {
-            enemy1ToDie e = target as enemy1ToDie;
-            Vector3 p = e.transform.position;
-            Handles.DrawLine(p - new Vector3(e.moveL, 0, 0), p + new Vector3(e.moveR,0 , 0));
-        }
-    }
-    */
     [Header("Set Colider for flip")]
     public Collider2D Collider_now;
     public Collider2D Collider_flipX;
