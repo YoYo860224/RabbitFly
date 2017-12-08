@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿#if UNITY_EDITOR
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
@@ -13,3 +15,5 @@ public class DrawMoveLineInScene : Editor {
         Handles.DrawLine(p - new Vector3(e.moveL, 0, 0), p + new Vector3(e.moveR, 0, 0));
     }
 }
+
+#endif
