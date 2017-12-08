@@ -65,7 +65,8 @@ public class enemy1ToDie : MonoBehaviour {
 
             if (!collision.transform.Find("Main").GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("down"))
             {
-                collision.gameObject.GetComponent<RabbitInfo>().GetHrut();
+                if (!collision.gameObject.GetComponent<RabbitInfo>().GetHrut())
+                    collision.gameObject.GetComponent<Control>().TopJump();
             }
             else
             {
