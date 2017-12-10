@@ -89,25 +89,6 @@ public class UiInMenu : MonoBehaviour
         this.Invoke("quitGame", 3.0f);
     }
 
-    /*
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.name == "Rabbit" && gameObject.name == "storyCarrot")
-        {
-            DoStroyCarrot();
-        }
-
-        else if (collision.gameObject.name == "Rabbit" && gameObject.name == "pkCarrot")
-        {
-            DoPkCarrot();
-        }
-        else if (collision.gameObject.name == "Rabbit" && gameObject.name == "quitCarrot")
-        {
-            DoQuitCarrot();
-        }
-    }
-    */
-
     //load choose stage scene
     private void changeChoose()
     {
