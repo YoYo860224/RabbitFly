@@ -18,6 +18,10 @@ public class enemy1ToDie : MonoBehaviour {
     public Collider2D Collider_now;
     public Collider2D Collider_flipX;
 
+    [Header("Dead Method")]
+    public bool standrad;
+    private Vector3 flyOut;
+
     // Use this for initialization
     void Start () {
         anim = GetComponent<Animator>();
@@ -41,9 +45,9 @@ public class enemy1ToDie : MonoBehaviour {
             }
             else if (transform.position.x > initx + moveR)
             {
-                GetComponent<SpriteRenderer>().flipX = false;
-                Collider_now.enabled = true;
+                GetComponent<SpriteRenderer>().flipX = false;             
                 Collider_flipX.enabled = false;
+                Collider_now.enabled = true;
             }
 
             // 移動
@@ -106,11 +110,31 @@ public class enemy1ToDie : MonoBehaviour {
     {
         anim.SetTrigger("dead");
         isdead = true;
-        Destroy(Collider_now);
-        Destroy(Collider_flipX);
+
+        if (Collider_now)
+            Destroy(Collider_now);
+        if (Collider_flipX)
+            Destroy(Collider_flipX);
+
         Destroy(GetComponent<Rigidbody2D>());
-        this.InvokeRepeating("DoFadeOut", 0.1f, 0.05f);
+
+        if (standrad)
+        {
+            InvokeRepeating("DoFadeOut", 0.1f, 0.05f);
+        }
+        else
+        {
+            InvokeRepeating("DoFadeOut", 0.1f, 0.05f);
+            flyOut = new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), 0.0f).normalized * 0.3f;
+            InvokeRepeating("DoFlyOut", 0.0f, 0.05f);
+        }
     }
+
+    private void DoFlyOut()
+    {
+        transform.position += flyOut;
+    }
+
     private void DoFadeOut()
     {
         GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, GetComponent<SpriteRenderer>().color.a - 0.03f);

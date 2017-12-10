@@ -28,7 +28,8 @@ public class BossArea : MonoBehaviour {
     {
         GetComponent<Collider2D>().isTrigger = false;
         GameObject.Find("Rabbit").GetComponent<Control>().canControl = true;
-        Boss.GetComponent<bossAction>().startAI();
+        Invoke("StartAIAIAI", 3.0f);
+      //  Boss.GetComponent<bossAction>().startAI();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -39,8 +40,13 @@ public class BossArea : MonoBehaviour {
 
             collision.GetComponent<Control>().canControl = false;
             Invoke("hasIn", 0.3f);
-            smotothCam.GetComponent<CameraFollow>().TopDownOffset = 0;
+            smotothCam.GetComponent<CameraFollow>().TopDownOffset = -1;
         }
+    }
+
+    void StartAIAIAI()
+    {
+        Boss.GetComponent<bossAction>().startAI();
     }
 
 

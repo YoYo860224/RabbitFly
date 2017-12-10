@@ -31,7 +31,17 @@ public class bossAction : MonoBehaviour {
     public GameObject fireBall_prefab;
     public GameObject fireBall_position;
 
+    [Header("Lasor")]
 
+    public int perLasorNum;
+    public float perLasorTime;
+    public float allLasorTime;
+    public float LasorReady;
+    public float LasorStay;
+
+    public GameObject lasorIcon;
+    public GameObject lasor_prefab;
+    public GameObject lasor_position;
 
     private BossActionType eCurState = BossActionType.idle;
     private BossActionType lastState = BossActionType.idle;
@@ -45,9 +55,9 @@ public class bossAction : MonoBehaviour {
         idle,
         sleeping,
         bossRocket,
-        bossFire
+        bossFire,
+        bossLasor
     }
-
 
     // Use this for initialization
     void Start () {
@@ -57,11 +67,6 @@ public class bossAction : MonoBehaviour {
 
         //startAI();
 
-        //test for function
-        //this.Invoke("attackRocket",3.0f);
-        //this.Invoke("attackFire", 3.0f);
-        //this.Invoke("Sleep", 1.0f);
-        //this.Invoke("giveHurt",3.0f);
     }
 
     public void startAI()
@@ -76,23 +81,30 @@ public class bossAction : MonoBehaviour {
             // for test/////////////////////////////////
             ttttttt++;
             if (ttttttt == 1)
-                eCurState = BossActionType.bossRocket;
+                eCurState = BossActionType.bossLasor;
             if (ttttttt == 2)
                 eCurState = BossActionType.bossFire;
             if (ttttttt == 3)
+                eCurState = BossActionType.sleeping;
+            if (ttttttt == 4)
+                eCurState = BossActionType.bossRocket;
+            if (ttttttt == 5)
                 eCurState = BossActionType.sleeping;
             ////////////////////////////////////////////
 
             switch (eCurState)
             {
                 case BossActionType.sleeping:
-                    this.Sleep();
+                    Sleep();
                     break;
                 case BossActionType.bossFire:
-                    this.ReadyFire();
+                    ReadyFire();
                     break;
+                case BossActionType.bossLasor:
+                    ReadyLasor();
+                    break;              
                 case BossActionType.bossRocket:
-                    this.ReadyRocket();
+                    ReadyRocket();
                     break;
             }
             lastState = eCurState;
@@ -101,7 +113,7 @@ public class bossAction : MonoBehaviour {
     }
 
     // rocket
-
+    #region rocket
     private void ReadyRocket()
     {
         rocketIcon.SetActive(true);
@@ -143,8 +155,10 @@ public class bossAction : MonoBehaviour {
         ///AI
         startAI();
     }
+    #endregion
 
     // fireBall
+    #region fire
 
     private void ReadyFire()
     {
@@ -175,6 +189,58 @@ public class bossAction : MonoBehaviour {
         ///AI
         startAI();
     }
+
+    #endregion
+
+    // laosr
+    #region lasor
+
+    private void ReadyLasor()
+    {
+        lasorIcon.SetActive(true);
+        anim.SetTrigger("ready");
+        Invoke("UsingLasor", readyTime);
+    }
+
+    private void UsingLasor()
+    {
+        anim.SetTrigger("lasor");
+        InvokeRepeating("MakeLasor", 0.1f, perLasorTime);
+        Invoke("StopLasor", allLasorTime);
+    }
+
+    private void MakeLasor()
+    {
+        // Don't Mind Just for focus Rabbit , but my Math is bad , use force mathod to solve this problem
+        // and the variable is set free dont mind. so this code is dirty
+
+        Vector3 target = GameObject.Find("Rabbit").transform.position;
+        Vector3 a = target - lasor_position.transform.position;
+        GameObject lasorPrefab_toR = Instantiate(lasor_prefab, lasor_position.transform.position, 
+            Quaternion.Euler(0, 0, Mathf.Atan2(a.y ,a.x) * 180.0f / 3.14f + 180.0f));
+        lasorPrefab_toR.transform.Find("BossVer").GetComponent<TheLasor>().Set(LasorReady, LasorStay);
+
+        for (int i = 1; i < perLasorNum; i++)
+        {
+            float rotatef = Random.Range(-200.0f, 30.0f);
+            GameObject lasorPrefab = Instantiate(lasor_prefab, lasor_position.transform.position, Quaternion.Euler(0, 0, rotatef));
+            lasorPrefab.transform.Find("BossVer").GetComponent<TheLasor>().Set(LasorReady, LasorStay);
+        }
+    }
+
+    private void StopLasor()
+    {
+        Invoke("WaitToLide", LasorReady + LasorStay);
+        CancelInvoke("MakeLasor");
+    }
+
+    private void WaitToLide()
+    {
+        lasorIcon.SetActive(false);
+        anim.SetTrigger("toIdle");
+    }
+    #endregion
+
 
     private void Finish()
     {
