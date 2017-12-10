@@ -12,8 +12,8 @@ EditorBuildSettings:
     path: Assets/Scene/UI/menuScene.unity
     guid: 8d6a88cc6e04b8f40b6933c9e4eabb2f
   - enabled: 1
-    path: Assets/Scene/UI/chooseScene.unity
-    guid: 06eee1faf4dcddd4a9f86e4b65f03439
+    path: Assets/Scene/UI/StoryScene.unity
+    guid: 407e486dbbad30b48b2125743238afae
   - enabled: 1
     path: Assets/Scene/Beta/PKMode.unity
     guid: c29275a2ac074b847b543ed52da09180
