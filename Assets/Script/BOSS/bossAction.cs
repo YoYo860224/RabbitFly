@@ -65,7 +65,7 @@ public class bossAction : MonoBehaviour {
         rocketIcon.SetActive(false);
         hp = max_hp;
 
-        //startAI();
+        startAI();
 
     }
 
