@@ -281,6 +281,8 @@ public class bossAction : MonoBehaviour {
         gameObject.layer = LayerMask.NameToLayer("DeadBody");
         anim.SetTrigger("dead");
         Time.timeScale = 0.3f;          //slow motion for killing boss       
+        PlayerPrefs.SetInt("record", 4);
+        Camera.main.GetComponent<TheSetting>().allSetUpdate();
         this.Invoke("Finish", 1.0f);    //will Return in here
     }
 

@@ -655,6 +655,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   smotothCam: {fileID: 251189138}
+  winToStageWhat: 3
 --- !u!4 &823055863
 Transform:
   m_ObjectHideFlags: 0

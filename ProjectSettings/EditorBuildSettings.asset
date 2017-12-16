@@ -15,18 +15,6 @@ EditorBuildSettings:
     path: Assets/Scene/UI/StoryScene.unity
     guid: 407e486dbbad30b48b2125743238afae
   - enabled: 1
-    path: Assets/Scene/Beta/PKMode.unity
-    guid: c29275a2ac074b847b543ed52da09180
-  - enabled: 1
-    path: Assets/Scene/Test/AllBossTest.unity
-    guid: 5d7dab8ecd809314b851a6ee439f3293
-  - enabled: 1
-    path: Assets/Scene/Test/AllEnemyTest.unity
-    guid: cf4b2fe6f2f636d44a18ed79ae0b9389
-  - enabled: 1
-    path: Assets/Scene/Test/AllTrapTest.unity
-    guid: dc26943551d55be4284567087b493752
-  - enabled: 1
     path: Assets/Scene/Game plot/OP1.unity
     guid: e091158b58244054480525e2ec55444e
   - enabled: 1
@@ -35,3 +23,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scene/Game plot/PKP.unity
     guid: c55ba0ef7e5d8484e9e564ac0e6d992e
+  - enabled: 1
+    path: Assets/Scene/Beta/PKMode.unity
+    guid: c29275a2ac074b847b543ed52da09180
+  - enabled: 1
+    path: Assets/Scene/Beta/stage1.unity
+    guid: cac01ff8124ae0d49af2ba58465b529c
+  - enabled: 1
+    path: Assets/Scene/Beta/stage2.unity
+    guid: 912b9f3ceef9b9346bebf6d9b5767391
+  - enabled: 1
+    path: Assets/Scene/Beta/stage3.unity
+    guid: ea199cb3ace40d6409711abb48e1c61a
+  - enabled: 1
+    path: Assets/Scene/Beta/stage4.unity
+    guid: a884cc04c8787d848997107827732ff2
