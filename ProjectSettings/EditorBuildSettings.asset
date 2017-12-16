@@ -26,3 +26,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scene/Test/AllTrapTest.unity
     guid: dc26943551d55be4284567087b493752
+  - enabled: 1
+    path: Assets/Scene/Game plot/OP1.unity
+    guid: e091158b58244054480525e2ec55444e
+  - enabled: 1
+    path: Assets/Scene/Game plot/OP2.unity
+    guid: 3988414b9f3e6c942ab4428eeeec010e

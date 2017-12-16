@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class UiInStory : MonoBehaviour {
 
     public GameObject LoadingPanel;
+    public GameObject fadeInPanel;
 
     public string Scenename_Menu;
     public string Scenename_stage1;
@@ -22,8 +23,9 @@ public class UiInStory : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		
-	}
+        fadeInPanel.SetActive(true);
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -56,7 +58,8 @@ public class UiInStory : MonoBehaviour {
                 break;
         }
     }
-    private void checkStage(int key)
+
+    public void checkStage(int key)
     {
         if (key == 2)
         {
