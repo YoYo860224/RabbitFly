@@ -2420,7 +2420,7 @@ MonoBehaviour:
   six: {fileID: 506712428}
   byeText: {fileID: 1307111867}
   SceneName_Story: OP1
-  SceneName_Pk: PKMode
+  SceneName_Pk: PKP
   fadeInPanel: {fileID: 729122814}
   LoadingPanel: {fileID: 1640384991}
   arrowPanel: {fileID: 424266838}

@@ -1238,6 +1238,8 @@ MonoBehaviour:
   blood1: {fileID: 114761525758156422}
   blood2: {fileID: 114873325364624912}
   blood3: {fileID: 114070189546725950}
+  scrollM: {fileID: 1972243211084160}
+  scrollS: {fileID: 1357106632500796}
 --- !u!114 &114051648986113460
 MonoBehaviour:
   m_ObjectHideFlags: 1

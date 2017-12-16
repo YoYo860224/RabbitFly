@@ -32,6 +32,9 @@ public class UIcontroller : MonoBehaviour {
     public Image blood2;
     public Image blood3;
 
+    [Header("Music")]
+    public GameObject scrollM;
+    public GameObject scrollS;
 
     public static UIcontroller UIcontroll;
 
@@ -54,6 +57,8 @@ public class UIcontroller : MonoBehaviour {
             finishPanel.SetActive(false);
         }
 
+        scrollM.GetComponent<Scrollbar>().value = PlayerPrefs.GetFloat("music_value");
+        scrollS.GetComponent<Scrollbar>().value = PlayerPrefs.GetFloat("sound_value");
     }
 
     void Update()  

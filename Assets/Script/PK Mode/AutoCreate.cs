@@ -14,13 +14,13 @@ public class AutoCreate : MonoBehaviour {
         },
         new Vector3[]
         {
-            new Vector3(-3.69f, 0.00f, 0),
+            new Vector3(-4.19f, 0.00f, 0),
             new Vector3(-2.52f, 2.50f, 0),
             new Vector3( 1.13f, 4.50f, 0),
             new Vector3( 0.00f, 7.00f, 0),
             new Vector3( 1.13f, 4.50f, 0),
             new Vector3( 2.52f, 2.50f, 0),
-            new Vector3( 3.69f, 0.00f, 0)
+            new Vector3( 4.19f, 0.00f, 0)
         },
         new Vector3[]
         {

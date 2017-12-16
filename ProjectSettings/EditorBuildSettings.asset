@@ -32,3 +32,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scene/Game plot/OP2.unity
     guid: 3988414b9f3e6c942ab4428eeeec010e
+  - enabled: 1
+    path: Assets/Scene/Game plot/PKP.unity
+    guid: c55ba0ef7e5d8484e9e564ac0e6d992e
