@@ -24,7 +24,6 @@ public class UiInStory : MonoBehaviour {
     // Use this for initialization
     void Start () {
         fadeInPanel.SetActive(true);
-
     }
 	
 	// Update is called once per frame
@@ -33,8 +32,7 @@ public class UiInStory : MonoBehaviour {
 	}
 
     public void BackToMenu()
-    {
-        
+    {        
         Invoke("OpenMenu", 0.3f);
     }
 
@@ -95,4 +93,5 @@ public class UiInStory : MonoBehaviour {
     {
         SceneManager.LoadSceneAsync(Scenename_stage4);
     }
+
 }
