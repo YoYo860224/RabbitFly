@@ -621,6 +621,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   smotothCam: {fileID: 251189138}
+  winToStageWhat: 0
 --- !u!4 &574515279
 Transform:
   m_ObjectHideFlags: 0
@@ -2100,6 +2101,40 @@ Prefab:
     - target: {fileID: 224157444198959452, guid: 58910e0d13fc4124eac4ea3e8fc28eb3,
         type: 2}
       propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224292459644554516, guid: 58910e0d13fc4124eac4ea3e8fc28eb3,
+        type: 2}
+      propertyPath: m_AnchorMin.x
+      value: 0.1188
+      objectReference: {fileID: 0}
+    - target: {fileID: 224292459644554516, guid: 58910e0d13fc4124eac4ea3e8fc28eb3,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0.21880001
+      objectReference: {fileID: 0}
+    - target: {fileID: 224292459644554516, guid: 58910e0d13fc4124eac4ea3e8fc28eb3,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224283024502236892, guid: 58910e0d13fc4124eac4ea3e8fc28eb3,
+        type: 2}
+      propertyPath: m_AnchorMin.x
+      value: 0.0756
+      objectReference: {fileID: 0}
+    - target: {fileID: 224283024502236892, guid: 58910e0d13fc4124eac4ea3e8fc28eb3,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0.17559999
+      objectReference: {fileID: 0}
+    - target: {fileID: 224283024502236892, guid: 58910e0d13fc4124eac4ea3e8fc28eb3,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1273775373307742, guid: 58910e0d13fc4124eac4ea3e8fc28eb3, type: 2}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
