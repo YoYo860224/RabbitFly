@@ -65,8 +65,7 @@ public class bossAction : MonoBehaviour {
         rocketIcon.SetActive(false);
         hp = max_hp;
 
-        startAI();
-
+        //startAI();
     }
 
     public void startAI()
@@ -232,6 +231,9 @@ public class bossAction : MonoBehaviour {
     {
         Invoke("WaitToLide", LasorReady + LasorStay);
         CancelInvoke("MakeLasor");
+
+        ///AI
+        startAI();
     }
 
     private void WaitToLide()
