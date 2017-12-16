@@ -16,6 +16,7 @@ public class UIrabbitMove : MonoBehaviour
 
     float timer_f = 0.02f;
     float nextKeyTime = 0.0f;
+
     // Use this for initialization
     void Start()
     {

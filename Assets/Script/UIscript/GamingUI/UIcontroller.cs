@@ -66,7 +66,6 @@ public class UIcontroller : MonoBehaviour {
     }
     public void restart()       // 重 load 這一關
     {
-        Application.UnloadLevel(Application.loadedLevel);
         Application.LoadLevel(Application.loadedLevel);
         Time.timeScale = 1f;
     }
@@ -141,5 +140,25 @@ public class UIcontroller : MonoBehaviour {
     {
         comboText.enabled = false;
     }
-   
+
+
+
+
+    public void SetMusic(float v)
+    {
+        PlayerPrefs.SetFloat("music_value", v);
+        Camera.main.GetComponent<TheSetting>().allSetUpdate();
+    }
+
+    public void SetSound(float v)
+    {
+        PlayerPrefs.SetFloat("sound_value", v);
+        Camera.main.GetComponent<TheSetting>().allSetUpdate();
+    }
+
+    public void SetRecord(int v)
+    {
+        PlayerPrefs.SetInt("record", v);
+        Camera.main.GetComponent<TheSetting>().allSetUpdate();
+    }
 }

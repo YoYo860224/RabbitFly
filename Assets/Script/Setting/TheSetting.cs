@@ -18,39 +18,26 @@ public class TheSetting : MonoBehaviour {
     public GameObject StoryUI;
 
 
-
-
-
-    /*
-
-    public KeyCode downKey_P1;
-    public KeyCode leftKey_P1;
-    public KeyCode rightKey_P1;
-    public KeyCode downKey_P2;
-    public KeyCode leftKey_P2;
-    public KeyCode rightKey_P2;
-
-    public float musicValue;
-    public float soundValue;
-
-    public int stagePass;
-    */
-
     // Use this for initialization
     void Start () {
+        allSetUpdate();
+    }
+
+    public void allSetUpdate()
+    {
         if (!PlayerPrefs.HasKey("key_fight_p1"))
-            PlayerPrefs.SetInt("key_fight_p1", (int)KeyCode.DownArrow);
+            PlayerPrefs.SetInt("key_fight_p1", (int)KeyCode.S);
         if (!PlayerPrefs.HasKey("key_right_p1"))
-            PlayerPrefs.SetInt("key_right_p1", (int)KeyCode.RightArrow);
+            PlayerPrefs.SetInt("key_right_p1", (int)KeyCode.D);
         if (!PlayerPrefs.HasKey("key_left_p1"))
-            PlayerPrefs.SetInt("key_left_p1", (int)KeyCode.LeftArrow);
+            PlayerPrefs.SetInt("key_left_p1", (int)KeyCode.A);
 
         if (!PlayerPrefs.HasKey("key_fight_p2"))
-            PlayerPrefs.SetInt("key_fight_p2", (int)KeyCode.S);
+            PlayerPrefs.SetInt("key_fight_p2", (int)KeyCode.DownArrow);
         if (!PlayerPrefs.HasKey("key_right_p2"))
-            PlayerPrefs.SetInt("key_right_p2", (int)KeyCode.D);
+            PlayerPrefs.SetInt("key_right_p2", (int)KeyCode.RightArrow);
         if (!PlayerPrefs.HasKey("key_left_p2"))
-            PlayerPrefs.SetInt("key_left_p2", (int)KeyCode.A);
+            PlayerPrefs.SetInt("key_left_p2", (int)KeyCode.LeftArrow);
 
 
         if (!PlayerPrefs.HasKey("music_value"))
@@ -64,16 +51,35 @@ public class TheSetting : MonoBehaviour {
 
         if (setP1Control)
         {
-            RabbitP1.GetComponent<Control>().Key_Fight = (KeyCode)PlayerPrefs.GetInt("key_fight_p1");
-            RabbitP1.GetComponent<Control>().Key_Right = (KeyCode)PlayerPrefs.GetInt("key_right_p1");
-            RabbitP1.GetComponent<Control>().Key_Left = (KeyCode)PlayerPrefs.GetInt("key_left_p1");
+            if (RabbitP1.GetComponent<Control>())
+            {
+                RabbitP1.GetComponent<Control>().Key_Fight = (KeyCode)PlayerPrefs.GetInt("key_fight_p1");
+                RabbitP1.GetComponent<Control>().Key_Right = (KeyCode)PlayerPrefs.GetInt("key_right_p1");
+                RabbitP1.GetComponent<Control>().Key_Left = (KeyCode)PlayerPrefs.GetInt("key_left_p1");
+            }
+
+            if (RabbitP1.GetComponent<UIrabbitMove>())
+            {
+                RabbitP1.GetComponent<UIrabbitMove>().Key_Fight = (KeyCode)PlayerPrefs.GetInt("key_fight_p1");
+                RabbitP1.GetComponent<UIrabbitMove>().Key_Right = (KeyCode)PlayerPrefs.GetInt("key_right_p1");
+                RabbitP1.GetComponent<UIrabbitMove>().Key_Left = (KeyCode)PlayerPrefs.GetInt("key_left_p1");
+            }
         }
 
         if (setP2Control)
         {
-            RabbitP2.GetComponent<Control>().Key_Fight = (KeyCode)PlayerPrefs.GetInt("key_fight_p2");
-            RabbitP2.GetComponent<Control>().Key_Right = (KeyCode)PlayerPrefs.GetInt("key_right_p2");
-            RabbitP2.GetComponent<Control>().Key_Left = (KeyCode)PlayerPrefs.GetInt("key_left_p2");
+            if (RabbitP2.GetComponent<Control>())
+            {
+                RabbitP2.GetComponent<Control>().Key_Fight = (KeyCode)PlayerPrefs.GetInt("key_fight_p2");
+                RabbitP2.GetComponent<Control>().Key_Right = (KeyCode)PlayerPrefs.GetInt("key_right_p2");
+                RabbitP2.GetComponent<Control>().Key_Left = (KeyCode)PlayerPrefs.GetInt("key_left_p2");
+            }
+            if (RabbitP2.GetComponent<UIrabbitMove>())
+            {
+                RabbitP2.GetComponent<UIrabbitMove>().Key_Fight = (KeyCode)PlayerPrefs.GetInt("key_fight_p1");
+                RabbitP2.GetComponent<UIrabbitMove>().Key_Right = (KeyCode)PlayerPrefs.GetInt("key_right_p1");
+                RabbitP2.GetComponent<UIrabbitMove>().Key_Left = (KeyCode)PlayerPrefs.GetInt("key_left_p1");
+            }
         }
 
         if (setMusicSound)
@@ -86,7 +92,6 @@ public class TheSetting : MonoBehaviour {
         {
             StoryUI.GetComponent<UiInStory>().checkStage(PlayerPrefs.GetInt("record"));
         }
-
     }
 
 }

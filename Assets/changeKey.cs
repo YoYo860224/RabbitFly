@@ -20,8 +20,9 @@ public class changeKey : MonoBehaviour {
                 if (Input.GetKey(vKey))
                 {
                     PlayerPrefs.SetInt(changeWhat, (int)vKey);
+                    Camera.main.GetComponent<TheSetting>().allSetUpdate();
                     changeWhat = null;
-                    this.enabled = false;
+                    this.gameObject.active = false;
                 }
             }
         }

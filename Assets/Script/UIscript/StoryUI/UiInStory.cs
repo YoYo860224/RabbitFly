@@ -16,10 +16,10 @@ public class UiInStory : MonoBehaviour {
     public string Scenename_stage4;
 
     [Header("stageImage")]
-    public Image stage1;
-    public Image stage2;
-    public Image stage3;
-    public Image stage4;
+    public GameObject stage1;
+    public GameObject stage2;
+    public GameObject stage3;
+    public GameObject stage4;
 
     // Use this for initialization
     void Start () {
@@ -59,17 +59,33 @@ public class UiInStory : MonoBehaviour {
 
     public void checkStage(int key)
     {
-        if (key == 2)
+        if (key == 1)
         {
-            stage1.enabled = false;
+            stage1.active = true;
+            stage2.active = false;
+            stage3.active = false;
+            stage4.active = false;
+        }
+        else if (key == 2)
+        {
+            stage1.active = false;
+            stage2.active = true;
+            stage3.active = false;
+            stage4.active = false;
         }
         else if (key == 3)
         {
-            stage2.enabled = false;
+            stage1.active = false;
+            stage2.active = false;
+            stage3.active = true;
+            stage4.active = false;
         }
         else if (key == 4)
         {
-            stage3.enabled = false;
+            stage1.active = false;
+            stage2.active = false;
+            stage3.active = false;
+            stage4.active = true;
         }
     }
 

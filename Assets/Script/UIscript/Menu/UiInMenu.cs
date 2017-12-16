@@ -110,6 +110,11 @@ public class UiInMenu : MonoBehaviour
         Application.Quit();
     }
 
+    public void timescale(float a)
+    {
+        Time.timeScale = a;
+    }
+
     #region QuitPanel
 
     private void loadquitPanel()

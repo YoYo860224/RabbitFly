@@ -39,7 +39,7 @@ public class AutoCreate : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        for (int i = 0; i < 100; i++)
+        for (int i = 0; i < 80; i++)
         {
             int use = Random.Range(0, 3);
             for (int j = 0; j < theVec[use].Length; j++)
