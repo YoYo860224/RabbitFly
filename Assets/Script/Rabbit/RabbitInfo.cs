@@ -74,6 +74,7 @@ public class RabbitInfo : MonoBehaviour
             {
                 // 死亡動畫
                 GetComponent<Control>().enabled = false;
+                Destroy(GetComponent<Rigidbody2D>());
                 transform.Find("Main").gameObject.SetActive(false);
                 transform.Find("Foot").gameObject.SetActive(false);
                 transform.Find("DeadBody").gameObject.SetActive(true);

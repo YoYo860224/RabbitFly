@@ -83,6 +83,12 @@ public class UIcontroller : MonoBehaviour {
 
     public void quitStage()
     {
+        SceneManager.LoadScene("storyScene");
+        Time.timeScale = 1f;
+    }
+
+    public void quitPkStage()
+    {
         SceneManager.LoadScene("menuScene");
         Time.timeScale = 1f;
     }

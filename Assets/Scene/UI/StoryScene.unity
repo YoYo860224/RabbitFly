@@ -2602,10 +2602,10 @@ MonoBehaviour:
   LoadingPanel: {fileID: 1414971733}
   fadeInPanel: {fileID: 1547005047}
   Scenename_Menu: menuScene
-  Scenename_stage1: AllEnemyTest
-  Scenename_stage2: AllTrapTest
-  Scenename_stage3: AllBossTest
-  Scenename_stage4: AllEnemyTest
+  Scenename_stage1: stage1
+  Scenename_stage2: stage2
+  Scenename_stage3: stage3
+  Scenename_stage4: stage4
   stage1: {fileID: 1532666060}
   stage2: {fileID: 467988587}
   stage3: {fileID: 305366192}
