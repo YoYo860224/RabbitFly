@@ -6,13 +6,14 @@ public class laserControl : MonoBehaviour {
 
     public Animator anim;
 
+    public float delayStart = 1.0f;
     public float laserOffTime;
     public float laserOnTime;
 
     void Start ()
     {
         float repeatDoTime = laserOffTime + laserOnTime;
-        InvokeRepeating("Timer_laser",1, repeatDoTime);
+        InvokeRepeating("Timer_laser", delayStart, repeatDoTime);
 	}
 
     void Update()

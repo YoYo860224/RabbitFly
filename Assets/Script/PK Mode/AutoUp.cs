@@ -26,7 +26,12 @@ public class AutoUp : MonoBehaviour {
     void addspeed()
     {
         float higest = player1.position.y > player2.position.y ? player1.position.y : player2.position.y;
-        if (higest - transform.position.y > 20)
+        if (higest - transform.position.y > 25)
+            if (player1.position.y > player2.position.y)
+                player2.GetComponent<PKlife>().GetHrut();
+            else
+                player1.GetComponent<PKlife>().GetHrut();
+        else if (higest - transform.position.y > 15)
             speed = Mathf.Lerp(speed, maxSpeed, 1.0f * Time.deltaTime);
         else
             speed = Mathf.Lerp(speed, minSpeed, 1.0f * Time.deltaTime);
