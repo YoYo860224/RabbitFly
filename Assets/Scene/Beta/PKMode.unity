@@ -1046,13 +1046,14 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1153049579}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9589bd810793aee4c8524c52ce493114, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   PkEnd: {fileID: 1752993947}
   pre_Broken: {fileID: 1587693620559510, guid: 791aba641cf84104ab3a360f87cbe1f4, type: 2}
+  allB: []
   start: {x: 0, y: -195, z: 0}
 --- !u!1001 &1253427764
 Prefab:
@@ -1427,6 +1428,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fightpic: {fileID: 129882984}
+  afterOp: {fileID: 1617302672}
+  once: 0
 --- !u!114 &1752993944
 MonoBehaviour:
   m_ObjectHideFlags: 0

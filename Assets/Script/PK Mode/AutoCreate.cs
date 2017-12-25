@@ -33,6 +33,8 @@ public class AutoCreate : MonoBehaviour {
 
     public Transform PkEnd;
     public GameObject pre_Broken;
+
+    public List<GameObject> allB;
   
     public Vector3 start;
 
@@ -47,6 +49,8 @@ public class AutoCreate : MonoBehaviour {
                 {
                     GameObject TheB = Instantiate<GameObject>(pre_Broken, new Vector3(0, start.y + (float)i * 7.7f, 0) + theVec[use][j], pre_Broken.transform.rotation);
                     TheB.GetComponent<BrokenPlatform>().forPkEnd = PkEnd;
+                    TheB.active = false;
+                    allB.Add(TheB);
                 }
         }
 	}

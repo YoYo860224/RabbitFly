@@ -2101,6 +2101,11 @@ Prefab:
       propertyPath: laserOnTime
       value: 2.6
       objectReference: {fileID: 0}
+    - target: {fileID: 114030246129808882, guid: 2d7cc0e673a70b542835ccdf39f60b4b,
+        type: 2}
+      propertyPath: delayStart
+      value: 1.3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2d7cc0e673a70b542835ccdf39f60b4b, type: 2}
   m_IsPrefabParent: 0
@@ -2200,7 +2205,7 @@ Prefab:
     - target: {fileID: 114151250401474152, guid: d29fa39a0c223284d9eb2b84672cde7c,
         type: 2}
       propertyPath: laserOnTime
-      value: 100
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4642680446152396, guid: d29fa39a0c223284d9eb2b84672cde7c, type: 2}
       propertyPath: m_LocalPosition.x
@@ -2209,6 +2214,11 @@ Prefab:
     - target: {fileID: 4642680446152396, guid: d29fa39a0c223284d9eb2b84672cde7c, type: 2}
       propertyPath: m_LocalPosition.y
       value: -0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114151250401474152, guid: d29fa39a0c223284d9eb2b84672cde7c,
+        type: 2}
+      propertyPath: laserOffTime
+      value: 0.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d29fa39a0c223284d9eb2b84672cde7c, type: 2}
@@ -2446,7 +2456,12 @@ Prefab:
     - target: {fileID: 114151250401474152, guid: d29fa39a0c223284d9eb2b84672cde7c,
         type: 2}
       propertyPath: laserOnTime
-      value: 100
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114151250401474152, guid: d29fa39a0c223284d9eb2b84672cde7c,
+        type: 2}
+      propertyPath: laserOffTime
+      value: 0.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d29fa39a0c223284d9eb2b84672cde7c, type: 2}
@@ -2696,11 +2711,16 @@ Prefab:
     - target: {fileID: 114030246129808882, guid: 2d7cc0e673a70b542835ccdf39f60b4b,
         type: 2}
       propertyPath: laserOffTime
-      value: 1.3
+      value: 2.6
       objectReference: {fileID: 0}
     - target: {fileID: 114030246129808882, guid: 2d7cc0e673a70b542835ccdf39f60b4b,
         type: 2}
       propertyPath: laserOnTime
+      value: 2.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114030246129808882, guid: 2d7cc0e673a70b542835ccdf39f60b4b,
+        type: 2}
+      propertyPath: delayStart
       value: 1.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -4327,6 +4347,52 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.28, y: 1.28}
   m_EdgeRadius: 0
+--- !u!1 &1224267625
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1224267626}
+  - component: {fileID: 1224267627}
+  m_Layer: 22
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1224267626
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1224267625}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1338769370}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!68 &1224267627
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1224267625}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -1.6309452, y: 8.482038}
+  - {x: 1.5644073, y: 8.448774}
 --- !u!1001 &1251293413
 Prefab:
   m_ObjectHideFlags: 0
@@ -4558,7 +4624,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 3.71, y: 2.66}
-    newSize: {x: 3.71, y: 16.892778}
+    newSize: {x: 3.71, y: 16.790123}
     adaptiveTilingThreshold: 0.5
     drawMode: 2
     adaptiveTiling: 0
@@ -4603,7 +4669,7 @@ SpriteRenderer:
   m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 3.71, y: 16.892778}
+  m_Size: {x: 3.71, y: 16.790123}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -4615,9 +4681,10 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1338769367}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 48.54, y: -2.148, z: 0}
+  m_LocalPosition: {x: 48.81, y: -2.169, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
-  m_Children: []
+  m_Children:
+  - {fileID: 1224267626}
   m_Father: {fileID: 0}
   m_RootOrder: 33
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6075,12 +6142,17 @@ Prefab:
     - target: {fileID: 114030246129808882, guid: 2d7cc0e673a70b542835ccdf39f60b4b,
         type: 2}
       propertyPath: laserOffTime
-      value: 2.6
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 114030246129808882, guid: 2d7cc0e673a70b542835ccdf39f60b4b,
         type: 2}
       propertyPath: laserOnTime
       value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114030246129808882, guid: 2d7cc0e673a70b542835ccdf39f60b4b,
+        type: 2}
+      propertyPath: delayStart
+      value: 2.6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2d7cc0e673a70b542835ccdf39f60b4b, type: 2}
