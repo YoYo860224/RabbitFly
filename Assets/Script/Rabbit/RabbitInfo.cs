@@ -50,6 +50,7 @@ public class RabbitInfo : MonoBehaviour
                 // 受傷一閃一閃       
                 count_shine = 0;
                 InvokeRepeating("Shine_Transparent", 0.0f, 0.2f);
+                transform.Find("hurt_sound").GetComponent<AudioSource>().Play();
 
                 // 受傷彈跳
                 if (anim.GetCurrentAnimatorStateInfo(0).IsName("down"))
@@ -103,6 +104,7 @@ public class RabbitInfo : MonoBehaviour
     public void AddCombo()
     {
         combo++;
+        transform.Find("getPoint_sound").GetComponent<AudioSource>().Play();      
         UIcontroller.UIcontroll.SetCombo(combo);
     }
     public void ResetCombo()

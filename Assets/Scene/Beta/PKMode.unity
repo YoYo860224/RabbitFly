@@ -708,18 +708,6 @@ GameObject:
   m_PrefabParentObject: {fileID: 1049552088571630, guid: fce05a1e008f41a4ab6db53fce8e19bd,
     type: 2}
   m_PrefabInternal: {fileID: 1469605058}
---- !u!114 &1028744296
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1028744295}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47061c6e1bc930e4b985d40f5bf6c44a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  grounded: 0
 --- !u!1001 &1108775265
 Prefab:
   m_ObjectHideFlags: 0
@@ -1218,11 +1206,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 114033334892555356, guid: fce05a1e008f41a4ab6db53fce8e19bd,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fce05a1e008f41a4ab6db53fce8e19bd, type: 2}
   m_IsPrefabParent: 0
@@ -1285,18 +1268,6 @@ GameObject:
   m_PrefabParentObject: {fileID: 1521881863774814, guid: d9aa415cf36be084daa3acc9c57916e4,
     type: 2}
   m_PrefabInternal: {fileID: 1971849645}
---- !u!114 &1629686931
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1629686930}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47061c6e1bc930e4b985d40f5bf6c44a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  grounded: 0
 --- !u!1 &1656378975
 GameObject:
   m_ObjectHideFlags: 0
@@ -1570,11 +1541,6 @@ Prefab:
     - target: {fileID: 4998757327879518, guid: d9aa415cf36be084daa3acc9c57916e4, type: 2}
       propertyPath: m_RootOrder
       value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 114098815543067532, guid: d9aa415cf36be084daa3acc9c57916e4,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d9aa415cf36be084daa3acc9c57916e4, type: 2}

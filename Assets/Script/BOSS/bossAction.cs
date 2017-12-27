@@ -48,7 +48,9 @@ public class bossAction : MonoBehaviour {
 
 
     // fortest 2 time 1 sleep
-    int ttttttt = 0;
+    int ttttttt = 1;
+
+    int onceHurt = 0;
 
     public enum BossActionType
     {
@@ -70,6 +72,7 @@ public class bossAction : MonoBehaviour {
 
     public void startAI()
     {
+        onceHurt = 0;
         if (eCurState == BossActionType.idle)
         {
             do
@@ -115,6 +118,7 @@ public class bossAction : MonoBehaviour {
     #region rocket
     private void ReadyRocket()
     {
+        transform.Find("ready_sound").GetComponent<AudioSource>().Play();
         rocketIcon.SetActive(true);
         anim.SetTrigger("ready");
         Invoke("UsingRocket", readyTime);
@@ -129,6 +133,7 @@ public class bossAction : MonoBehaviour {
 
     private void MakeRocket()
     {
+        transform.Find("rocket_sound").GetComponent<AudioSource>().Play();        
         GameObject rocketPrefab = Instantiate(rocket_prefab, rocket_position.transform.position, Quaternion.identity);
         StartCoroutine(rocketExplode(rocketPrefab, rocketLifeTime));
     }
@@ -161,6 +166,7 @@ public class bossAction : MonoBehaviour {
 
     private void ReadyFire()
     {
+        transform.Find("ready_sound").GetComponent<AudioSource>().Play();
         fireIcon.SetActive(true);       
         anim.SetTrigger("ready");
         Invoke("UsingFire", readyTime);
@@ -175,6 +181,7 @@ public class bossAction : MonoBehaviour {
 
     void MakeFire()
     {
+        transform.Find("fire_sound").GetComponent<AudioSource>().Play();
         GameObject ballPrefab = Instantiate(fireBall_prefab, fireBall_position.transform.position, Quaternion.identity);
         ballPrefab.GetComponent<TheFireBall>().SetSpeed(fireBallSpeed);      
     }
@@ -196,6 +203,7 @@ public class bossAction : MonoBehaviour {
 
     private void ReadyLasor()
     {
+        transform.Find("ready_sound").GetComponent<AudioSource>().Play();
         lasorIcon.SetActive(true);
         anim.SetTrigger("ready");
         Invoke("UsingLasor", readyTime);
@@ -218,7 +226,7 @@ public class bossAction : MonoBehaviour {
         GameObject lasorPrefab_toR = Instantiate(lasor_prefab, lasor_position.transform.position, 
             Quaternion.Euler(0, 0, Mathf.Atan2(a.y ,a.x) * 180.0f / 3.14f + 180.0f));
         lasorPrefab_toR.transform.Find("BossVer").GetComponent<TheLasor>().Set(LasorReady, LasorStay);
-
+        transform.Find("lasor_sound").GetComponent<AudioSource>().Play();
         for (int i = 1; i < perLasorNum; i++)
         {
             float rotatef = Random.Range(-200.0f, 30.0f);
@@ -232,14 +240,15 @@ public class bossAction : MonoBehaviour {
         Invoke("WaitToLide", LasorReady + LasorStay);
         CancelInvoke("MakeLasor");
 
-        ///AI
-        startAI();
+
     }
 
     private void WaitToLide()
     {
         lasorIcon.SetActive(false);
         anim.SetTrigger("toIdle");
+        ///AI
+        Invoke("startAI", 1.5f);
     }
     #endregion
 
@@ -258,21 +267,28 @@ public class bossAction : MonoBehaviour {
     // 受傷之類的
     private void GetHurt(Collision2D collision)
     {
-        hp--;
-        if (hp > 0)
+        if (onceHurt == 0)
         {
-            anim.SetTrigger("getHurt");
-            collision.gameObject.GetComponent<Control>().TopJump();
+            hp--;
+            onceHurt = 1;
+            if (hp > 0)
+            {
+                transform.Find("hurt_sound").GetComponent<AudioSource>().Play();
+                anim.SetTrigger("getHurt");
+                collision.gameObject.GetComponent<Control>().TopJump();
 
-            weakState = true;
-            InvokeRepeating("Shine_Transparent", 0.0f, 0.2f);
-            Invoke("CancelWeak", weakTime);
+                weakState = true;
+                InvokeRepeating("Shine_Transparent", 0.0f, 0.2f);
+                Invoke("CancelWeak", weakTime);
 
-            this.Invoke("startAI", 3.0f);
-        }
-        else
-        {
-            Dead();
+                this.Invoke("startAI", 3.0f);
+            }
+            else
+            {
+                transform.Find("dead_sound").GetComponent<AudioSource>().Play();
+                Dead();
+            }
+
         }
     }
 
@@ -282,7 +298,7 @@ public class bossAction : MonoBehaviour {
         anim.SetTrigger("dead");
         Time.timeScale = 0.3f;          //slow motion for killing boss       
         PlayerPrefs.SetInt("record", 4);
-        Camera.main.GetComponent<TheSetting>().allSetUpdate();
+        Camera.main.GetComponent<TheSetting>().allSetUpdate();        
         this.Invoke("Finish", 1.0f);    //will Return in here
     }
 

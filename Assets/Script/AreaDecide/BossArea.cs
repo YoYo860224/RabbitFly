@@ -12,6 +12,8 @@ public class BossArea : MonoBehaviour {
     public AudioClip music;
     bool bossStage;
 
+    int ttt = 0;
+
     // Use this for initialization
     void Start () {
         bossStage = false;
@@ -50,7 +52,11 @@ public class BossArea : MonoBehaviour {
 
     void StartAIAIAI()
     {
-        Boss.GetComponent<bossAction>().startAI();
+        if (ttt == 0)
+        {
+            Boss.GetComponent<bossAction>().startAI();
+            ttt = 1;
+        }
     }
 
 

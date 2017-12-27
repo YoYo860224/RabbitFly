@@ -45,10 +45,17 @@ public class Control : MonoBehaviour
         nowPos = transform.position;
     }
 
+    void stopsound()
+    {
+        transform.Find("fall_sound").GetComponent<AudioSource>().Stop();
+    }
+
     // Update is called once per frame
     void Update()
     {
         anim.SetBool("isGround", grounded);
+        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("down") && transform.Find("fall_sound").GetComponent<AudioSource>().isPlaying)
+            Invoke("stopsound", 0.2f);
 
         if (canControl)
         {
@@ -79,6 +86,8 @@ public class Control : MonoBehaviour
                 {
                     if (!grounded)
                     {
+                        transform.Find("fall_sound").GetComponent<AudioSource>().Play();
+                        CancelInvoke("stopsound");
                         if (!anim.GetCurrentAnimatorStateInfo(0).IsName("down"))
                         {
                             anim.ResetTrigger("jumpR");
@@ -93,6 +102,7 @@ public class Control : MonoBehaviour
             }
             #endregion
         }
+
 
         // 檢查是否下降
         prePos = nowPos;
