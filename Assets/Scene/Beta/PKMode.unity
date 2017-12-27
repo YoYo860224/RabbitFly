@@ -219,11 +219,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 65f1cd3c8e0e43c408800e854884a1be, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 8b42b7b7dd2447348aee36ef88edf54b, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.471
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -1020,6 +1020,8 @@ MonoBehaviour:
   player2: {fileID: 675168068}
   winner: {fileID: 0}
   loser: {fileID: 0}
+  backMusic: {fileID: 235210075}
+  music: {fileID: 8300000, guid: aafbb557e4155b846a39cbe05fa51e69, type: 3}
 --- !u!114 &1153049586
 MonoBehaviour:
   m_ObjectHideFlags: 0

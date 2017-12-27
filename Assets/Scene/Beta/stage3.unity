@@ -1647,11 +1647,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4417213169614452, guid: eed017d8ddbac014a8b8ed6c22c8bed5, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 3.48
+      value: 3.43
       objectReference: {fileID: 0}
     - target: {fileID: 4417213169614452, guid: eed017d8ddbac014a8b8ed6c22c8bed5, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -52.31
+      value: -52.34
       objectReference: {fileID: 0}
     - target: {fileID: 4417213169614452, guid: eed017d8ddbac014a8b8ed6c22c8bed5, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1685,6 +1685,11 @@ Prefab:
         type: 2}
       propertyPath: speed
       value: 0.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 114112949480123310, guid: eed017d8ddbac014a8b8ed6c22c8bed5,
+        type: 2}
+      propertyPath: moveR
+      value: 0.37
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: eed017d8ddbac014a8b8ed6c22c8bed5, type: 2}
@@ -2399,11 +2404,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 65f1cd3c8e0e43c408800e854884a1be, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 8dc5788d488bedc4a9d8b623601aae6e, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -3134,6 +3139,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Boss: {fileID: 10835563}
   smotothCam: {fileID: 251189138}
+  backMusic: {fileID: 1102688144}
+  music: {fileID: 8300000, guid: fc0e41a2384576b40b562ff11155c998, type: 3}
 --- !u!4 &1414502126
 Transform:
   m_ObjectHideFlags: 0

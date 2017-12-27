@@ -8,6 +8,8 @@ public class BossArea : MonoBehaviour {
 
     public GameObject Boss;
     public GameObject smotothCam;
+    public GameObject backMusic;
+    public AudioClip music;
     bool bossStage;
 
     // Use this for initialization
@@ -39,6 +41,8 @@ public class BossArea : MonoBehaviour {
             bossStage = true;
 
             collision.GetComponent<Control>().canControl = false;
+            backMusic.GetComponent<AudioSource>().clip = music;
+            backMusic.GetComponent<AudioSource>().Play();
             Invoke("hasIn", 0.3f);
             smotothCam.GetComponent<CameraFollow>().TopDownOffset = -1;
         }

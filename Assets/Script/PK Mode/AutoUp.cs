@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AutoUp : MonoBehaviour {
+public class AutoUp : MonoBehaviour
+{
 
     public Transform player1;
     public Transform player2;
@@ -12,21 +13,23 @@ public class AutoUp : MonoBehaviour {
     public float speed;
 
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    // Use this for initialization
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
         addspeed();
         transform.position += new Vector3(0, speed * Time.deltaTime, 0);
-	}
+    }
 
     void addspeed()
     {
         float higest = player1.position.y > player2.position.y ? player1.position.y : player2.position.y;
-        if (higest - transform.position.y > 25)
+        if (Mathf.Abs(player1.position.y - player2.position.y) > 25)
             if (player1.position.y > player2.position.y)
                 player2.GetComponent<PKlife>().GetHrut();
             else

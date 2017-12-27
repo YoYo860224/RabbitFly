@@ -9,6 +9,11 @@ public class PkCamara : MonoBehaviour {
     public Transform winner;
     public Transform loser;
 
+    public GameObject backMusic;
+    public AudioClip music;
+
+    private int ggg = 0;
+
     // Use this for initialization
     void Start ()
     {
@@ -28,6 +33,14 @@ public class PkCamara : MonoBehaviour {
         {
              //slow
             FocusWinner();
+            if (ggg == 0)
+            {
+                ggg = 1;
+                backMusic.GetComponent<AudioSource>().clip = music;
+                backMusic.GetComponent<AudioSource>().loop = false;
+                backMusic.GetComponent<AudioSource>().Play();
+
+            }
         }
     }
 

@@ -1115,11 +1115,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 3f486ebd6c4c3fb4dbfe62610bab7309, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -1727,12 +1727,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   setP1Control: 1
   setP2Control: 0
-  setMusicSound: 0
+  setMusicSound: 1
   setRecord: 0
   RabbitP1: {fileID: 620112141}
   RabbitP2: {fileID: 0}
-  Music: {fileID: 0}
-  Sound: {fileID: 0}
+  Music: {fileID: 645696702}
+  Sound: {fileID: 554341379}
   StoryUI: {fileID: 0}
 --- !u!81 &933151754
 AudioListener:

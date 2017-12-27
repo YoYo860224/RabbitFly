@@ -6,8 +6,14 @@ public class treasure : MonoBehaviour {
 
     public GameObject winPlot;
 
-	// Use this for initialization
-	void Start () {
+    public GameObject backMusic;
+    public AudioClip music;
+
+
+    private int ggg = 0;
+
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -30,5 +36,14 @@ public class treasure : MonoBehaviour {
         transform.Find("good").gameObject.active = true;
         winPlot.active = true;
         UIcontroller.UIcontroll.delayDo("openWin", 1.0f);
+
+        if (ggg == 0)
+        {
+            ggg = 1;
+            backMusic.GetComponent<AudioSource>().clip = music;
+            backMusic.GetComponent<AudioSource>().loop = false;
+            backMusic.GetComponent<AudioSource>().Play();
+
+        }
     }
 }
