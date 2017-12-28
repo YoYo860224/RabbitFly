@@ -3676,7 +3676,7 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1475021878564164, guid: 58910e0d13fc4124eac4ea3e8fc28eb3, type: 2}
+    - target: {fileID: 1661956895799462, guid: 58910e0d13fc4124eac4ea3e8fc28eb3, type: 2}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -3766,7 +3766,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:

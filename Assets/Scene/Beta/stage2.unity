@@ -3469,12 +3469,12 @@ Prefab:
     - target: {fileID: 224157444198959452, guid: 58910e0d13fc4124eac4ea3e8fc28eb3,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 375
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224157444198959452, guid: 58910e0d13fc4124eac4ea3e8fc28eb3,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 169
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224157444198959452, guid: 58910e0d13fc4124eac4ea3e8fc28eb3,
         type: 2}
@@ -3554,6 +3554,15 @@ Prefab:
     - target: {fileID: 224157444198959452, guid: 58910e0d13fc4124eac4ea3e8fc28eb3,
         type: 2}
       propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114982809468213894, guid: 58910e0d13fc4124eac4ea3e8fc28eb3,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: stage3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1661956895799462, guid: 58910e0d13fc4124eac4ea3e8fc28eb3, type: 2}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

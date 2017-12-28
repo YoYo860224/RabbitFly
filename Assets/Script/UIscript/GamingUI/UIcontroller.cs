@@ -102,6 +102,18 @@ public class UIcontroller : MonoBehaviour {
     public void openWin()
     {
         winPanel.SetActive(true);
+        if (blood3.IsActive())
+        {
+            winPanel.transform.Find("star3").gameObject.active = true;
+        }
+        else if (blood2.IsActive())
+        {
+            winPanel.transform.Find("star2").gameObject.active = true;
+        }
+        else if (blood1.IsActive())
+        {
+            winPanel.transform.Find("star1").gameObject.active = true;
+        }
         Time.timeScale = 1f;
     }
 
@@ -153,7 +165,10 @@ public class UIcontroller : MonoBehaviour {
     }
 
 
-
+    public void OpenStage(string sceneName)
+    {
+        SceneManager.LoadSceneAsync(sceneName);
+    }
 
     public void SetMusic(float v)
     {
