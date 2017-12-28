@@ -11,6 +11,7 @@ public class UIrabbitMove : MonoBehaviour
     public KeyCode Key_Fight = KeyCode.S;
 
     private bool sMove = false;
+    private int willTo = 0;
     private Vector3 endpos;
     private float process = 0;
 
@@ -32,31 +33,34 @@ public class UIrabbitMove : MonoBehaviour
     {
         if (Input.GetKeyDown(Key_Right))
         {
-            if (!sMove)
-            {
-                if ((this.transform.position.x) < 5)
+            // if (!sMove)
+            // {
+               if(willTo<=1)
                 {
-                    endpos = new Vector3(this.transform.position.x + 5, this.transform.position.y, 0);
+            //endpos = new Vector3(this.transform.position.x + 5, this.transform.position.y, 0);
+
+            willTo++;
                     anim.SetTrigger("jumpR");
                     anim.SetBool("Be_fallRound", true);
                     process = 0;
                     sMove = true;
                 }
-            }
+           // }
         }
         if (Input.GetKeyDown(Key_Left))
         {
-            if (!sMove)
+            // if (!sMove)
+            // {
+            if (willTo >= 1)
             {
-                if ((this.transform.position.x) > -5)
-                {
-                    endpos = new Vector3(this.transform.position.x - 5, this.transform.position.y, 0);
-                    anim.SetTrigger("jumpL");
+                //  endpos = new Vector3(this.transform.position.x - 5, this.transform.position.y, 0);
+                willTo--;
+                anim.SetTrigger("jumpL");
                     anim.SetBool("Be_fallRound", true);
                     process = 0;
                     sMove = true;
                 }
-            }
+            
         }
 
         if (Input.GetKeyDown(Key_Fight))
@@ -69,6 +73,9 @@ public class UIrabbitMove : MonoBehaviour
                 sMove = true;
             }
         }
+
+        endpos = new Vector3(-5 + willTo * 5 , this.transform.position.y, 0);
+
         if (sMove)
         {
             process += Time.deltaTime * 2;
