@@ -109,5 +109,5 @@ public class UiInStory : MonoBehaviour {
     {
         SceneManager.LoadSceneAsync(Scenename_stage4);
     }
-
+    
 }
