@@ -13,6 +13,6 @@ public class soundValueControl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("sound_value") * rate;
+    }
 }
