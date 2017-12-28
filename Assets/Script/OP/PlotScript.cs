@@ -27,6 +27,8 @@ public class PlotScript : MonoBehaviour {
         {
             if (now < image.Length - 1)
                 now++;
+            else if (Input.GetKey((KeyCode)PlayerPrefs.GetInt("key_fight_p1")))
+                OpenNext();
         }
     }
 
