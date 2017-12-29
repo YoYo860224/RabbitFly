@@ -26,6 +26,7 @@ public class UIrabbitMove : MonoBehaviour
 
         anim.SetTrigger("jumpL");
         anim.SetBool("Be_fallRound", true);
+        endpos = transform.position;
     }
 
     // Update is called once per frame
