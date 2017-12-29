@@ -62,4 +62,5 @@ public class SettingPanel : MonoBehaviour {
         PressAnyKey.active = true;
         PressAnyKey.GetComponent<changeKey>().changeWhat = what;
     }
+
 }

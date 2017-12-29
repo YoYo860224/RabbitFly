@@ -9,6 +9,8 @@ public class PlotScript : MonoBehaviour {
     public int now;
     public string nextScene;
 
+    bool once = true;
+
 	// Use this for initialization
 	void Start () {
     }
@@ -27,13 +29,19 @@ public class PlotScript : MonoBehaviour {
         {
             if (now < image.Length - 1)
                 now++;
-            else if (Input.GetKey((KeyCode)PlayerPrefs.GetInt("key_fight_p1")))
+            else if (Input.GetKey((KeyCode)PlayerPrefs.GetInt("key_fight_p1")) || Input.GetKey((KeyCode)PlayerPrefs.GetInt("key_fight_p2")))
+                OpenNext();
+            else if (Input.GetKey(KeyCode.Space))
                 OpenNext();
         }
     }
 
     public void OpenNext()
     {
-        SceneManager.LoadSceneAsync(nextScene);
+        if (once)
+        {
+            SceneManager.LoadSceneAsync(nextScene);
+            once = false;
+        }
     }
 }

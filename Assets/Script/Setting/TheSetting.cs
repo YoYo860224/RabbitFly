@@ -23,27 +23,33 @@ public class TheSetting : MonoBehaviour {
         allSetUpdate();
     }
 
+    public void clear_setting()
+    {
+        PlayerPrefs.DeleteAll();
+        allSetUpdate();
+    }
+
     public void allSetUpdate()
     {
         if (!PlayerPrefs.HasKey("key_fight_p1"))
-            PlayerPrefs.SetInt("key_fight_p1", (int)KeyCode.S);
+            PlayerPrefs.SetInt("key_fight_p1", (int)KeyCode.DownArrow);
         if (!PlayerPrefs.HasKey("key_right_p1"))
-            PlayerPrefs.SetInt("key_right_p1", (int)KeyCode.D);
+            PlayerPrefs.SetInt("key_right_p1", (int)KeyCode.RightArrow);
         if (!PlayerPrefs.HasKey("key_left_p1"))
-            PlayerPrefs.SetInt("key_left_p1", (int)KeyCode.A);
+            PlayerPrefs.SetInt("key_left_p1", (int)KeyCode.LeftArrow);
 
         if (!PlayerPrefs.HasKey("key_fight_p2"))
-            PlayerPrefs.SetInt("key_fight_p2", (int)KeyCode.DownArrow);
+            PlayerPrefs.SetInt("key_fight_p2", (int)KeyCode.S);
         if (!PlayerPrefs.HasKey("key_right_p2"))
-            PlayerPrefs.SetInt("key_right_p2", (int)KeyCode.RightArrow);
+            PlayerPrefs.SetInt("key_right_p2", (int)KeyCode.D);
         if (!PlayerPrefs.HasKey("key_left_p2"))
-            PlayerPrefs.SetInt("key_left_p2", (int)KeyCode.LeftArrow);
+            PlayerPrefs.SetInt("key_left_p2", (int)KeyCode.A);
 
 
         if (!PlayerPrefs.HasKey("music_value"))
-            PlayerPrefs.SetFloat("music_value", 50.0f);
+            PlayerPrefs.SetFloat("music_value", 0.5f);
         if (!PlayerPrefs.HasKey("sound_value"))
-            PlayerPrefs.SetFloat("sound_value", 50.0f);
+            PlayerPrefs.SetFloat("sound_value", 0.5f);
 
         if (!PlayerPrefs.HasKey("record"))
             PlayerPrefs.SetInt("record", 1);
