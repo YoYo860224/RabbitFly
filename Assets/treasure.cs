@@ -27,6 +27,7 @@ public class treasure : MonoBehaviour {
         if (collision.transform.name == "Rabbit")
         {
             GetComponent<Animator>().enabled = true;
+            collision.GetComponent<Control>().canControl = false;
             Invoke("papapa", 1.5f);
         }
     }

@@ -816,6 +816,11 @@ Prefab:
       propertyPath: allLasorTime
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 114188704843632404, guid: e4dda3abc7a5ada479bc75ffb6f77262,
+        type: 2}
+      propertyPath: rocketLifeTime
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e4dda3abc7a5ada479bc75ffb6f77262, type: 2}
   m_IsPrefabParent: 0

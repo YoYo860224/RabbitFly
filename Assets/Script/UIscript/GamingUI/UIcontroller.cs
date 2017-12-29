@@ -104,15 +104,30 @@ public class UIcontroller : MonoBehaviour {
         winPanel.SetActive(true);
         if (blood3.IsActive())
         {
-            winPanel.transform.Find("star3").gameObject.active = true;
+            if(winPanel.transform.Find("star3"))
+                winPanel.transform.Find("star3").gameObject.active = true;
+            if (winPanel.transform.Find("star2"))
+                winPanel.transform.Find("star2").gameObject.active = false;
+            if (winPanel.transform.Find("star1"))
+                winPanel.transform.Find("star1").gameObject.active = false;
         }
         else if (blood2.IsActive())
         {
-            winPanel.transform.Find("star2").gameObject.active = true;
+            if (winPanel.transform.Find("star3"))
+                winPanel.transform.Find("star3").gameObject.active = false;
+            if (winPanel.transform.Find("star2"))
+                winPanel.transform.Find("star2").gameObject.active = true;
+            if (winPanel.transform.Find("star1"))
+                winPanel.transform.Find("star1").gameObject.active = false;
         }
         else if (blood1.IsActive())
         {
-            winPanel.transform.Find("star1").gameObject.active = true;
+            if (winPanel.transform.Find("star3"))
+                winPanel.transform.Find("star3").gameObject.active = false;
+            if (winPanel.transform.Find("star2"))
+                winPanel.transform.Find("star2").gameObject.active = false;
+            if (winPanel.transform.Find("star1"))
+                winPanel.transform.Find("star1").gameObject.active = true;
         }
         Time.timeScale = 1f;
     }

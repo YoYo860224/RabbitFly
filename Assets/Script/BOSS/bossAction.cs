@@ -48,7 +48,7 @@ public class bossAction : MonoBehaviour {
 
 
     // fortest 2 time 1 sleep
-    int ttttttt = 1;
+    int ttttttt = 0;
 
     int onceHurt = 0;
 
@@ -83,14 +83,16 @@ public class bossAction : MonoBehaviour {
             // for test/////////////////////////////////
             ttttttt++;
             if (ttttttt == 1)
-                eCurState = BossActionType.bossLasor;
+                eCurState = BossActionType.bossRocket;
             if (ttttttt == 2)
                 eCurState = BossActionType.bossFire;
             if (ttttttt == 3)
                 eCurState = BossActionType.sleeping;
             if (ttttttt == 4)
-                eCurState = BossActionType.bossRocket;
+                eCurState = BossActionType.bossLasor;
             if (ttttttt == 5)
+                eCurState = BossActionType.sleeping;
+            if (ttttttt == 7)
                 eCurState = BossActionType.sleeping;
             ////////////////////////////////////////////
 
